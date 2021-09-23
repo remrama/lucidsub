@@ -9,7 +9,6 @@ Project exploring [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) for
 
 * `config.py` is where things like the data directory are specified
 * `guideline.md` has the detailed descriptions of all themes
-* `labels.json` is directly from Doccano and has the theme id2txt mappings
 
 ### Linear files
 
