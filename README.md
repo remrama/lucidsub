@@ -19,6 +19,14 @@ python scrape_reddit.py
 # clean up a bit and reduce to 200
 python clean_reddit.py
 
-# convert initial reddit download from csv to jsonl for Doccano
+# convert initial reddit download from csv to jsonl
+# (for uploading to Doccano)
 python csv2jsonl.py
+
+#######################
+##  code on Doccano  ##
+#######################
+
+# convert Doccano ratings to usable csv
+python doccano2csv.py
 ```

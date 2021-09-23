@@ -23,12 +23,7 @@ import config as c
 # could just glob this
 CODERS = ["remym", "lsowin", "rraider"]
 
-POS_THEMES = ["Nightmare resolution", "Positive morning mood",
-    "Dream enhancement", "Rehearsal", "Creativity/insight"]
-NEG_THEMES = ["Sleep paralysis", "Reality confusion",
-    "Poor sleep", "Unwanted lucid dreams", "Lucid nightmares"]
-
-all_themes = POS_THEMES + NEG_THEMES
+all_themes = c.POS_THEMES + c.NEG_THEMES
 
 doccano_dir = os.path.join(c.DATA_DIR, "doccano-20210822")
 
