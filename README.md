@@ -3,17 +3,17 @@
 Project exploring [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) for expressions of positive and negative experiences with lucid dreaming.
 
 
-## Non-linear files
+## Code/file descriptions
+
+### Non-linear files
 
 * `config.py` is where things like the data directory are specified
 * `guideline.md` has the detailed descriptions of all themes
 * `labels.json` is directly from Doccano and has the theme id2txt mappings
 
-
-### Linear code/file description
+### Linear files
 
 ```bash
-
 # grab r/LucidDreaming posts from reddit
 python scrape_reddit.py
 
