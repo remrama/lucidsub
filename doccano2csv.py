@@ -20,8 +20,6 @@ import pandas as pd
 import config as c
 
 
-# could just glob this
-CODERS = ["remym", "lsowin", "rraider"]
 
 all_themes = c.POS_THEMES + c.NEG_THEMES
 
@@ -32,7 +30,7 @@ export_fname2 = os.path.join(c.RESULTS_DIR, "doccano-postXthemeXcoder.csv")
 
 # load in doccano data
 data = {}
-for i, c in enumerate(CODERS):
+for i, c in enumerate(c.CODERS):
     unique_coder_id = string.ascii_uppercase[i]
     import_fname = os.path.join(doccano_dir, f"{c}.jsonl")
     with open(import_fname, "r", encoding="utf-8") as infile:
@@ -66,8 +64,7 @@ postXthemeXcoder = df.groupby(["subtheme","coder"]
     ).unstack(fill_value=0
     ).reindex(
         pd.MultiIndex.from_product([all_themes, data.keys()], names=["subtheme", "coder"]),
-        axis="index", fill_value=0
-    )#.T
+        axis="index", fill_value=0)
 
 postXtheme.to_csv(export_fname1, index=True)
 postXthemeXcoder.to_csv(export_fname2, index=True)
