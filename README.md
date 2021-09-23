@@ -23,9 +23,9 @@ python clean_reddit.py
 # (for uploading to Doccano)
 python csv2jsonl.py
 
-#######################
-##  code on Doccano  ##
-#######################
+###############################################
+##  manually code/annotate posts on Doccano  ##
+###############################################
 
 # convert Doccano ratings to usable csv
 python doccano2csv.py
