@@ -5,16 +5,16 @@ import os
 import json
 import pandas as pd
 
-# IMPORT_FNAME = r"C:/Users/sowin/<project_folder>/r-LucidDreaming_200.csv"
-# EXPORT_FNAME = r"C:/Users/sowin/<project_folder>/r-LucidDreaming_200.jsonl"
-IMPORT_FNAME = "/Users/remy/Google Drive/projects/lucidsub/data/r-LucidDreaming_2020April+200.csv"
-EXPORT_FNAME = "/Users/remy/Google Drive/projects/lucidsub/data/r-LucidDreaming_2020April+200.jsonl"
+import config as c
+
+import_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_2020April+200.csv")
+export_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_2020April+200.jsonl")
 
 # load data
-df = pd.read_csv(IMPORT_FNAME, encoding="utf-8")
+df = pd.read_csv(import_fname, encoding="utf-8")
 
 # open a file that will continuously be written into
-with open(EXPORT_FNAME, "w", encoding="utf-8") as outfile:
+with open(export_fname, "w", encoding="utf-8") as outfile:
 
     # loop over each row and export with a line between title and text
     for _, row in df.iterrows():

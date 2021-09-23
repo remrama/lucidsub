@@ -1,11 +1,14 @@
 """scrape all of r/Dreams
 """
+import os
 import tqdm
 import datetime
 
 import pandas as pd
 
 from psaw import PushshiftAPI
+
+import config as c
 
 SUBREDDIT = "LucidDreaming"
 SUBMISSION_FILTERS = [
@@ -27,7 +30,7 @@ SUBMISSION_FILTERS = [
 
 now_string = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S")
 
-export_fname = f"../data/r-{SUBREDDIT}_{now_string}.csv"
+export_fname = os.path.join(c.DATA_DIR, f"r-{SUBREDDIT}_{now_string}.csv")
 
 api = PushshiftAPI()
 gen = api.search_submissions(subreddit=SUBREDDIT, filter=SUBMISSION_FILTERS)
