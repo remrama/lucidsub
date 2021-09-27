@@ -24,7 +24,10 @@ ser = df1.rename_axis(columns="theme").unstack().rename("n_votes")
 subser = ser[(ser>0) & (ser<n_coders)]
 subdf = subser.swaplevel().sort_index().reset_index(drop=False)
 
-outdf = pd.merge(subdf, df2[["id", "selftext"]],
+outdf = pd.merge(subdf, df2[["id", "title", "selftext"]],
     left_on="post_id", right_on="id", validate="m:1")
+
+# outdf["post"] = outdf.apply(lambda row: row["title"]+"\n\n"+row["selftext"], axis=1)
+# outdf.drop(columns=["title", "selftext"], inplace=True)
 
 outdf.to_csv(export_fname, index=False)
