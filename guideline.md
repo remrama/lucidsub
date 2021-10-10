@@ -112,7 +112,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 ### 1.2 Positive waking mood
 
-> Any reference to lucidity resulting in a positive mood during the day, especially upon awakening in the morning. Such positive emotions commonly referred to include, but are not limited to, feeling refreshed, excited, and/or happy.
+> Any reference to lucidity resulting in a positive mood during the day, especially upon awakening in the morning. It is okay to use context of a post to infer positive waking mood when it is not explicitly mentioned. Such positive emotions commonly referred to include, but are not limited to, feeling refreshed, excited, and/or happy.
 >
 > * ... _**I remember waking up happy and I began to look forward to dreaming at night**. I began using this as an escape from real life traumatic experiences occurring atm._
 > * **Success!!** After months of trying I finally had my first lucid dream.
@@ -145,7 +145,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 ### 1.5 Creativity/insight
 
-> Any explicit reference to a creative action in the dream or a realization made while dreaming that has an outcome on waking life. Examples commonly include (a) asking the lucid dream a solution to a real life problem and (b) creating a piece of artwork during the lucid dream.
+> Any explicit reference to a creative action in the dream or a realization made while dreaming that has an outcome on waking life. This also includes comments and questions about lucid dreaming being used for creativity/insight. Examples commonly include (a) asking the lucid dream a solution to a real life problem and (b) creating a piece of artwork during the lucid dream.
 >
 > * _**I have composed both melodies and lyrics in dreams**, but I have also tried to practice the piano in dreams and it was nearly impossible. My hands were all crazy and I just couldn't focus. That's not to say that it wouldn't work for anyone, but it was a no-go in my experience._
 > * _When I was in college **I asked some monster for an answer to a calculus problem I couldn't get (went lucid since no such thing as monsters), to my surprise they were right when I tried what they said irl**..._
