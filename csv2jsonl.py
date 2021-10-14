@@ -7,8 +7,8 @@ import pandas as pd
 
 import config as c
 
-import_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_2020April+200.csv")
-export_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_2020April+200.jsonl")
+import_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_2019April+200.csv")
+export_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_2019April+200.jsonl")
 
 # load data
 df = pd.read_csv(import_fname, encoding="utf-8")

@@ -8,7 +8,7 @@ import pandas as pd
 import config as c
 
 import_fname1 = os.path.join(c.RESULTS_DIR, "doccano-postXtheme.csv")
-import_fname2 = os.path.join(c.DATA_DIR, "r-LucidDreaming_2020April+200.csv")
+import_fname2 = os.path.join(c.DATA_DIR, "r-LucidDreaming_2019April+200.csv")
 
 
 export_fname = os.path.join(c.RESULTS_DIR, "doccano-disagreements2solve.csv")
