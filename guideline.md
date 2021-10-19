@@ -2,7 +2,7 @@
 
 <br>
 
-There are 13 sub-themes to use for coding. Each sub-theme is a part of 1 of 2 main themes: _Positive effects_ and _Negative effects_ of lucid dreaming.
+There are 10 sub-themes to use for coding. Each sub-theme is a part of 1 of 2 main themes: _Positive effects_ and _Negative effects_ of lucid dreaming.
 
 Highlight any relevant section of a post to code it under 1 of the 13 sub-themes.
 
@@ -48,10 +48,6 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
         <td><i>I asked some monster for an answer to a calculus problem I couldn't get</i></td>
     </tr>
     <tr>
-        <td>Other</td>
-        <td>[positive effects that don't fit in a defined sub-theme]</td>
-    </tr>
-    <tr>
         <td rowspan="7">Negative effects</td>
         <td>Sleep paralysis</td>
         <td><i>Got auditory hallucinations of some demon lady whispering coming closer and closer</i></td>
@@ -69,16 +65,8 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
         <td><i>I just want to be able to relax sometimes and not have to think of things</i></td>
     </tr>
     <tr>
-        <td>Lucidity without control</td>
-        <td><i>I tried to summon things but nothing was in my control</i></td>
-    </tr>
-    <tr>
         <td>Lucid dysphoria</td>
         <td><i>I was just awoken by a lucid dream turned night terror</i></td>
-    </tr>
-    <tr>
-        <td>Other</td>
-        <td>[negative effects that don't fit in a defined sub-theme]</td>
     </tr>
 </table>
 
@@ -153,14 +141,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 <br>
 
-### 1.6 Other (positive)
 
-> Posts that seem important and worthy of including as a positive effect of lucid dreaming, despite not matching any existing Positive effect sub-themes.
->
-> * _...The first lucid dream I can recall was in middle school. I was like "hey you're dreaming" and I began to glide off the cement and soar through to class. I remember waking up happy and I began to look forward to dreaming at night. **I began using this as an escape from real life traumatic experiences** occurring atm._
-
-
-<br>
 
 ## Negative effects
 
@@ -207,26 +188,9 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 <br>
 
-### 2.5 Lucidity without dream control
-
-> Any mentions of an inability to control actions or content in a lucid dream, despite wanting to! Note, it does not have to result in an explicitly negative experience.
->
-> * _So I had a dream today where I genuinely think it was lucid. I was flying and then suddenly thought to myself wait a minute this is lucid dreaming, so I just kept on flying and **I wanted to fly around somewhere but I couldn't. I tried to summon things but nothing was in my control**. I then falsely woke up feeling very disappointing, but then later I woke up for real._
-> * _**Whenever I'm dreaming and I realize that I'm having a dream it is almost instantly an ejection from the dream and I wake up.**_
-
-
-<br>
-
-### 2.6 Lucid dysphoria
+### 2.5 Lucid dysphoria
 
 > Any reference to a dyshoric/bad dream or nightmare where the dreamer is lucid and unable to do anything positive about it. Note this does not include bad dreams or nightmares that do not involve lucidity. They must specify being lucid prior to or during the nightmare, and that they are unable to do anything about it (e.g., use lucidity to "fix" or adjust the dream).
 >
 > * _I've been a lucid dreamer ever since I was a kid and started having reoccurring dreams. I had gotten the hang of it pretty well and could even think my way out of sticky situations most times. However, **since I've been pregnant I've had the gnarliest and most vile unthinkable dreams that either moved too fast for me to change the scenario or they just down right scare me and I wake up immediately. I was just awoken by a lucid dream turned night terror** and in the beginning it was all good..._
 > * _... I decided that I wanted to break the atmospheric barrier, but the sky had a surface tension to it, until suddenly I was in the stars. It was a disturbing and disorienting experience. I was looking for my spiritual teacher, but kept spinning, not unlike what it feels like when you're drunk..._
-
-
-<br>
-
-### 2.7 Other (negative)
-
-> Posts that seem important and worthy of including as a negative effect of lucid dreaming, despite not matching any existing Negative effect sub-themes.
