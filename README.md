@@ -28,14 +28,16 @@ python csv2jsonl.py
 ###############################################
 
 # convert Doccano ratings to usable csv
-python doccano2csv.py --date 20210822
-python doccano2csv.py --date 20211024
+python doccano2csv.py --version 1
+python doccano2csv.py --version 2
 
 # visualize how often coders (dis)agreed
-python plot-agreement_postXtheme.py
-python plot-agreement_postXthemeXcoder.py
+python plot-agreement_postXtheme.py --version 1
+python plot-agreement_postXtheme.py --version 2
+python plot-agreement_postXthemeXcoder.py --version 1
+python plot-agreement_postXthemeXcoder.py --version 2
 
 # export a csv with only disagreements, for discussion
-python find_disagreements.py --date 20210822
-python find_disagreements.py --date 20211024
+python find_disagreements.py --version 1
+python find_disagreements.py --version 2
 ```
