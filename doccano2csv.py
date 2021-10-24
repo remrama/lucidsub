@@ -15,18 +15,24 @@ Load in the Doccano output and generate a few csv files.
 import os
 import json
 import string
+import argparse
 import pandas as pd
 
 import config as c
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--version", type=int, required=True, choices=[1, 2])
+args = parser.parse_args()
 
+version = args.version
+date = c.DATES[f"v{version}"]
 
 all_themes = c.POS_THEMES + c.NEG_THEMES
 
-doccano_dir = os.path.join(c.DATA_DIR, "doccano-20210822")
+doccano_dir = os.path.join(c.DATA_DIR, f"doccano-{date}")
 
-export_fname1 = os.path.join(c.RESULTS_DIR, "doccano-postXtheme.csv")
-export_fname2 = os.path.join(c.RESULTS_DIR, "doccano-postXthemeXcoder.csv")
+export_fname1 = os.path.join(c.RESULTS_DIR, f"doccano-postXtheme_v{version}.csv")
+export_fname2 = os.path.join(c.RESULTS_DIR, f"doccano-postXthemeXcoder_v{version}.csv")
 
 # load in doccano data
 data = {}
@@ -46,6 +52,8 @@ row_list = []
 for coder, coder_data in data.items():
     for post_id, coded_section in coder_data.items():
         for start, end, subtheme in coded_section:
+            # correct original mislabeling of theme in doccano
+            subtheme = "Lucid dysphoria" if subtheme == "Lucid nightmares" else subtheme
             if subtheme in all_themes:
                 df_row = dict(coder=coder, post_id=post_id, subtheme=subtheme)
                 row_list.append(df_row)
@@ -65,6 +73,7 @@ postXthemeXcoder = df.groupby(["subtheme","coder"]
     ).reindex(
         pd.MultiIndex.from_product([all_themes, data.keys()], names=["subtheme", "coder"]),
         axis="index", fill_value=0)
+
 
 postXtheme.to_csv(export_fname1, index=True)
 postXthemeXcoder.to_csv(export_fname2, index=True)

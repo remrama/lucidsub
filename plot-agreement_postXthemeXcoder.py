@@ -2,6 +2,7 @@
 *more detailed
 """
 import os
+import argparse
 import numpy as np
 import pandas as pd
 
@@ -9,6 +10,11 @@ import matplotlib.pyplot as plt
 
 import config as c
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--version", type=int, required=True, choices=[1, 2])
+args = parser.parse_args()
+
+version = args.version
 
 plt.rcParams["savefig.dpi"] = 600
 plt.rcParams["interactive"] = True
@@ -20,8 +26,8 @@ plt.rcParams["mathtext.it"] = "Arial:italic"
 plt.rcParams["mathtext.bf"] = "Arial:bold"
 
 
-import_fname = os.path.join(c.RESULTS_DIR, "doccano-postXthemeXcoder.csv")
-export_fname = os.path.join(c.RESULTS_DIR, "plots", "doccano-postXthemeXcoder.png")
+import_fname = os.path.join(c.RESULTS_DIR, f"doccano-postXthemeXcoder_v{version}.csv")
+export_fname = os.path.join(c.RESULTS_DIR, "plots", f"doccano-postXthemeXcoder_v{version}.png")
 
 df = pd.read_csv(import_fname, index_col=["subtheme", "coder"])
 

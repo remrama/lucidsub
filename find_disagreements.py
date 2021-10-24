@@ -3,15 +3,23 @@ save out a csv with JUST the posts with disagreement.
 add the text too so we can talk them out.
 """
 import os
+import argparse
 import pandas as pd
 
 import config as c
 
-import_fname1 = os.path.join(c.RESULTS_DIR, "doccano-postXtheme.csv")
-import_fname2 = os.path.join(c.DATA_DIR, "r-LucidDreaming_2019April+200.csv")
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--version", type=int, required=True, choices=[1, 2])
+args = parser.parse_args()
+
+version = args.version
+month = c.MONTHS[f"v{version}"]
+
+import_fname1 = os.path.join(c.RESULTS_DIR, f"doccano-postXtheme_v{version}.csv")
+import_fname2 = os.path.join(c.DATA_DIR, f"r-LucidDreaming_2019{month}+200.csv")
 
 
-export_fname = os.path.join(c.RESULTS_DIR, "doccano-disagreements2solve.csv")
+export_fname = os.path.join(c.RESULTS_DIR, f"doccano-disagreements2solve_v{version}.csv")
 
 df1 = pd.read_csv(import_fname1, index_col="post_id")
 df2 = pd.read_csv(import_fname2)
