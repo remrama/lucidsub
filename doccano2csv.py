@@ -54,6 +54,7 @@ for coder, coder_data in data.items():
         for start, end, subtheme in coded_section:
             # correct original mislabeling of theme in doccano
             subtheme = "Lucid dysphoria" if subtheme == "Lucid nightmares" else subtheme
+            subtheme = "Positive waking mood" if subtheme == "Positive morning mood" else subtheme
             if subtheme in all_themes:
                 df_row = dict(coder=coder, post_id=post_id, subtheme=subtheme)
                 row_list.append(df_row)

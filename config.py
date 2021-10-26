@@ -4,7 +4,7 @@ RESULTS_DIR = r"C:\Users\rrm2308\data\lucidsub\derivatives"
 
 CODERS = ["remym", "lsowin", "rraider"]
 
-POS_THEMES = ["Nightmare resolution", "Positive morning mood",
+POS_THEMES = ["Nightmare resolution", "Positive waking mood",
     "Dream enhancement", "Rehearsal", "Creativity/insight"]
 NEG_THEMES = ["Sleep paralysis", "Reality confusion",
     "Poor sleep", "Unwanted lucid dreams", "Lucid dysphoria"]
@@ -21,5 +21,3 @@ MONTHS = {
 
 POS_COLOR = "#4CAF50"
 NEG_COLOR = "#F44336"
-POS_COLORMAP = "Greens"
-NEG_COLORMAP = "Reds"

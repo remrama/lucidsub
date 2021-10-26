@@ -32,7 +32,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
         <td><i>I woke up from a tsunami nightmare and didn't have excessive anxiety over it, because I realized it wasn't really happening</i></td>
     </tr>
     <tr>
-        <td>Positive morning mood</td>
+        <td>Positive waking mood</td>
         <td><i>I remember waking up happy and I began to look forward to dreaming at night</i></td>
     </tr>
     <tr>
@@ -170,7 +170,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 ### 2.3 Poor sleep
 
-> Any reference to poor or degregaded sleep quality, including that as a result from (a) induction methods or (b) dream content.
+> Any reference to poor or degregaded sleep quality, including that as a result from (a) induction methods or (b) dream content, as well as (c) poor sleep leading to lucidity.
 >
 > * _**I Lucid Dream almost every single night, sometimes so vividly and intense that I wake up exhausted from my dream. I wake up more tired than when I feel asleep.** Any tips to downgrade my level of lucid dreaming?? lol I love my dreams, it's incredibly fascinating but can be a bit much sometimes?_
 > * _I naturally lucid dream once every one or two months. I have tried SSILD about 6 times of which I became lucid 4 times. **My problem is that after doing the cycles I can't fall asleep quickly. I'm awake for at least 10-15 mins.** I have used the searchbar but other posts don't provide a solution to this problem. **Also I sometimes wake up in advance of my 4 am alarm. This causes me to somewhat stay awake until the alarm goes off. The method kind of works for me but it leaves me with sleep deprivation in the morning.**_

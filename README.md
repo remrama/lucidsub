@@ -22,11 +22,11 @@ python clean_reddit.py
 # convert initial reddit download from csv to jsonl
 # (for uploading to Doccano)
 python csv2jsonl.py
+```
 
-###############################################
-##  manually code/annotate posts on Doccano  ##
-###############################################
+--> leave code land and annotate posts on Doccano
 
+```bash
 # convert Doccano ratings to usable csv
 python doccano2csv.py --version 1
 python doccano2csv.py --version 2
@@ -40,4 +40,11 @@ python plot-agreement_postXthemeXcoder.py --version 2
 # export a csv with only disagreements, for discussion
 python find_disagreements.py --version 1
 python find_disagreements.py --version 2
+```
+
+--> leave code land and resolve disputes in excel
+
+```bash
+# export the final totals in csv and png
+python total_counts.py
 ```
