@@ -28,7 +28,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
     </tr>
     <tr>
         <td rowspan="5">Positive effects</td>
-        <td>Nightmare resolution/treatment</td>
+        <td>Nightmare resolution</td>
         <td><i>I woke up from a tsunami nightmare and didn't have excessive anxiety over it, because I realized it wasn't really happening</i></td>
     </tr>
     <tr>
@@ -86,7 +86,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 <br>
 
-### 1.1 Nightmare resolution/treatment
+### 1.1 Nightmare resolution
 
 > **Definition:** Anytime an explicit connection is made between lucid dreaming and the reduction of bad dream content. Common examples include, but are not limited to, when a user mentions becoming lucid during a bad dream and (a) waking up from it, (b) changing the content, or (c) being comfortable with the knowledge that it's not real.
 >
