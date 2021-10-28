@@ -8,7 +8,6 @@ import pandas as pd
 
 import config as c
 
-# import seaborn as sea
 import matplotlib.pyplot as plt
 plt.rcParams["savefig.dpi"] = 600
 plt.rcParams["interactive"] = True
