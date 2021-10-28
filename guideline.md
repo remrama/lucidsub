@@ -27,7 +27,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
         <td><b>Brief example</b></td>
     </tr>
     <tr>
-        <td rowspan="6">Positive effects</td>
+        <td rowspan="5">Positive effects</td>
         <td>Nightmare resolution/treatment</td>
         <td><i>I woke up from a tsunami nightmare and didn't have excessive anxiety over it, because I realized it wasn't really happening</i></td>
     </tr>
@@ -48,7 +48,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
         <td><i>I asked some monster for an answer to a calculus problem I couldn't get</i></td>
     </tr>
     <tr>
-        <td rowspan="7">Negative effects</td>
+        <td rowspan="5">Negative effects</td>
         <td>Sleep paralysis</td>
         <td><i>Got auditory hallucinations of some demon lady whispering coming closer and closer</i></td>
     </tr>
