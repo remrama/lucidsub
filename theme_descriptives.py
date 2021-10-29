@@ -11,9 +11,8 @@ import pandas as pd
 import config as c
 
 
-export_fname1 = os.path.join(c.RESULTS_DIR, "themes-descriptivesXtheme.csv")
-export_fname2 = os.path.join(c.RESULTS_DIR, "themes-descriptivesXvalence.csv")
-export_fname3 = os.path.join(c.RESULTS_DIR, "themes-descriptives_misc.json")
+export_fname1 = os.path.join(c.RESULTS_DIR, "themes-descriptives.csv")
+export_fname2 = os.path.join(c.RESULTS_DIR, "themes-descriptives.json")
 
 
 def load_resolved_dataframe(version_number):
@@ -50,7 +49,7 @@ raw = pd.read_csv(import_fname,
 df = df.join(raw, how="left")
 
 df["theme_valence"] = df["theme"].apply(
-    lambda x: "positive" if x in c.POS_THEMES else "negative")
+    lambda x: "all_positive" if x in c.POS_THEMES else "all_negative")
 
 
 dfXtheme = df.reset_index().groupby("theme"
@@ -98,9 +97,8 @@ total_info = {
     "n_themes_per_post" : df.groupby("post_id").theme.nunique().value_counts().to_dict(),
 }
 
+dfX = pd.concat([dfXtheme, dfXvalence], axis=0)
 
-
-dfXtheme.to_csv(export_fname1, index=True)
-dfXvalence.to_csv(export_fname2, index=True)
-with open(export_fname3, "w", encoding="utf-8") as f:
+dfX.to_csv(export_fname1, index=True, index_label="theme")
+with open(export_fname2, "w", encoding="utf-8") as f:
     json.dump(total_info, f, indent=True)
