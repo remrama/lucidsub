@@ -47,4 +47,10 @@ python find_disagreements.py --version 2
 ```bash
 # export the final totals in csv and png
 python total_counts.py
+
+# export the highlighted sections to browse for examples
+python highlights_table.py
+
+# export some descriptive values to include in Results text
+python theme_descriptives.py
 ```

@@ -88,7 +88,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 ### 1.1 Nightmare resolution
 
-> **Definition:** Anytime an explicit connection is made between lucid dreaming and the reduction of bad dream content. Common examples include, but are not limited to, when a user mentions becoming lucid during a bad dream and (a) waking up from it, (b) changing the content, or (c) being comfortable with the knowledge that it's not real.
+> **Definition:** Any time an explicit connection is made between lucid dreaming and the reduction of bad dream content. Common examples include, but are not limited to, when a user mentions becoming lucid during a bad dream and (a) waking up from it, (b) changing the content, or (c) being comfortable with the knowledge that it's not real.
 >
 > **Examples:**
 > * _... a giant wave was forming, ready to hit everyone at the beach. I started running and rushed to a high spot. **I got this feeling: "Wait, I am dreaming. This is another one of my nightmares." And I said out loud: "I don't want a tsunami, I want to be safe". And in one second, I was sitting at a cafe, safe.** I don't remember what happened after that, but, for the first time, after almost 6 months, **I woke up from a tsunami nightmare and didn't have excessive anxiety over it, because I realized it wasn't really happening**._
@@ -133,7 +133,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 ### 1.5 Creativity/insight
 
-> Any explicit reference to a creative action in the dream or a realization made while dreaming that has an outcome on waking life. This also includes comments and questions about lucid dreaming being used for creativity/insight. Examples commonly include (a) asking the lucid dream a solution to a real life problem and (b) creating a piece of artwork during the lucid dream.
+> Any reference to a creative action in the dream or a realization made while dreaming that has an outcome on waking life. This also includes comments and questions about lucid dreaming being used for creativity/insight. Examples commonly include (a) asking the lucid dream a solution to a real life problem and (b) creating a piece of artwork during the lucid dream.
 >
 > * _**I have composed both melodies and lyrics in dreams**, but I have also tried to practice the piano in dreams and it was nearly impossible. My hands were all crazy and I just couldn't focus. That's not to say that it wouldn't work for anyone, but it was a no-go in my experience._
 > * _When I was in college **I asked some monster for an answer to a calculus problem I couldn't get (went lucid since no such thing as monsters), to my surprise they were right when I tried what they said irl**..._
@@ -180,7 +180,7 @@ In the Detailed Theme Descriptions section, there's a **bolded section of each e
 
 ### 2.4 Unwanted lucid dreams
 
-> Any mentions of a user having naturally occuring lucid dreams and not being able to make them stop.
+> Any mention of a user having naturally occuring lucid dreams and not being able to make them stop (despite wanting to).
 >
 > * _... **Eventually it becomes really tiring and although I do really appreciate being able to lucid dream, I just want to be able to relax sometimes and not have to think of things.**_
 > * _I had a pretty frightening series of false awakenings last night, where over and over and over I woke up in my room and realized I was dreaming either naturally or by something "off" in my environment. **I did not try and induce lucidity.  Sometimes it just happens.**_

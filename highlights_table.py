@@ -14,7 +14,7 @@ import pandas as pd
 import config as c
 
 
-export_fname = os.path.join(c.RESULTS_DIR, "highlights_table.csv")
+export_fname = os.path.join(c.RESULTS_DIR, "themes-highlights_table.csv")
 
 
 def load_resolved_dataframe(version_number):
@@ -71,12 +71,12 @@ for d in doccano_dirs:
 
 df = pd.DataFrame(rows)
 
-coder_renaming = { c: string.ascii_uppercase[i]+"_txt"
+coder_renaming = { c: "coder_"+string.ascii_uppercase[i]+"_txt"
     for i, c in enumerate(c.CODERS) }
 
 
 # get rid of unused themes from part 1
-theme_order = c.POS_THEMES + c.NEG_THEMES
+theme_order = sorted(c.POS_THEMES) + sorted(c.NEG_THEMES)
 df = df[df["theme"].isin(theme_order)].reset_index(drop=True)
 
 
@@ -87,7 +87,7 @@ df = df[df.apply(keeper_func, axis=1)].reset_index(drop=True)
 # merge all highlights of a given post for a given user
 # then pivot to get all highlights in the same row
 df = df.groupby(["post_id", "coder", "theme", "full_txt"]
-    ).highlight_txt.apply(lambda ser: ser.str.cat(sep=";;")
+    ).highlight_txt.apply(lambda ser: ser.str.cat(sep="[:::]")
     ).reset_index(drop=False
     ).pivot(columns="coder", values="highlight_txt",
             index=["theme", "post_id", "full_txt"]
@@ -114,6 +114,8 @@ def readability_order(row):
             n_coders = 2.2
         elif coder_true[0] and coder_true[2]:
             n_coders = 2.1
+    if n_coders == 1:
+        n_coders -= .1*[ i for i, x in enumerate(coder_true) if x ][0]
     return n_coders
 
 # this is hackey but I don't see another way rn
@@ -125,6 +127,7 @@ df = df.sort_values(
     ).drop(columns=["theme_order", "readability_order"])
 
 # reorder columns so it's A, B, C
+# column_order = ["post_id", "full_txt", "n_coders_highlight"] + coder_columns
 column_order = ["post_id", "full_txt"] + coder_columns + ["n_coders_highlight"]
 df = df[column_order]
 

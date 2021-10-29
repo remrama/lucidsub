@@ -15,8 +15,8 @@ plt.rcParams["font.family"] = "sans-serif"
 plt.rcParams["font.sans-serif"] = "Arial"
 
 
-export_fname_table = os.path.join(c.RESULTS_DIR, "total_counts.csv")
-export_fname_plot = os.path.join(c.RESULTS_DIR, "plots", "total_counts.png")
+export_fname_table = os.path.join(c.RESULTS_DIR, "themes-total_counts.csv")
+export_fname_plot = os.path.join(c.RESULTS_DIR, "plots", "themes-total_counts.png")
 
 
 def load_resolved_dataframe(version_number):
