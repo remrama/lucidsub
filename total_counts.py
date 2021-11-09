@@ -36,8 +36,6 @@ def load_resolved_dataframe(version_number):
     return df
 
 
-# df_v1 = load_resolved_dataframe(1)
-# df_v2 = load_resolved_dataframe(2)
 df = pd.concat([ load_resolved_dataframe(v) for v in (1, 2) ])
 
 counts = df.sum().rename("count")
@@ -48,23 +46,54 @@ BAR_ARGS = {
     "edgecolor" : "black",
 }
 
-# themes = (c.POS_THEMES, c.NEG_THEMES)
 themes = (sorted(c.POS_THEMES), sorted(c.NEG_THEMES))
 colors = (c.POS_COLOR, c.NEG_COLOR)
 
-_, axes = plt.subplots(ncols=2, figsize=(6,2.5),
-    sharex=True, constrained_layout=True)
 
-for ax, th, col in zip(axes, themes, colors):
+# generate axes for pos and neg themes (and extras for showing the max)
+_, axes = plt.subplots(ncols=4, figsize=(6,2.5),
+    constrained_layout=True,
+    gridspec_kw={"width_ratios":[1, .05, 1, .05]})
+
+# separate into axes for drawing and those for showing the max amount
+axes4drawing = (axes[0], axes[2])
+axes4nothing = (axes[1], axes[3])
+
+# stuff for drawing little slashy lines
+EXTENT = 2.5 # proportion of vertical to horizontal extent of the slanted line
+slash_args = {
+    "marker" : [(-1, -EXTENT), (1, EXTENT)],
+    "markersize" : 7,
+    "linestyle" : "none",
+    "color" : "k",
+    "mec" : "k",
+    "mew" : 1,
+    "clip_on" : False,
+}
+
+# draw slashy lines on the "extra" axes
+for ax in axes4nothing:
+    ax.spines["left"].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.tick_params(left=False, labelleft=False)
+    ax.plot([0], [0], transform=ax.transAxes, **slash_args)
+    ax.set_xbound(lower=396, upper=400)
+    ax.set_xticks([400])
+
+# draw data
+for ax, th, col in zip(axes4drawing, themes, colors):
     ax.barh(th, counts.loc[th], color=col, **BAR_ARGS)
     ax.invert_yaxis()
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.xaxis.set(major_locator=plt.MultipleLocator(20),
         minor_locator=plt.MultipleLocator(5))
+    ax.plot([1], [0], transform=ax.transAxes, **slash_args)
+    ax.set_xbound(upper=84)
 
-ax.set_xbound(upper=80)
 
+# export
 plt.savefig(export_fname_plot)
 plt.close()
 
