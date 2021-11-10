@@ -8,6 +8,7 @@ import pingouin as pg
 
 import config as c
 
+from statsmodels.graphics.mosaicplot import mosaic
 import matplotlib.pyplot as plt
 plt.rcParams["savefig.dpi"] = 600
 plt.rcParams["interactive"] = True
@@ -16,7 +17,10 @@ plt.rcParams["font.sans-serif"] = "Arial"
 
 import_fname1 = os.path.join(c.DATA_DIR, "doccano-20211110", "lsowin.csv")
 import_fname2 = os.path.join(c.RESULTS_DIR, "themes-highlights_table.csv")
-export_fname = os.path.join(c.RESULTS_DIR, "plots", "controlXvalence.png")
+export_fname_plot = os.path.join(c.RESULTS_DIR, "plots", "controlXvalence.png")
+export_fname_chi2E = os.path.join(c.RESULTS_DIR, "controlXvalence_ch12-expected.csv")
+export_fname_chi2O = os.path.join(c.RESULTS_DIR, "controlXvalence_ch12-observed.csv")
+export_fname_chi2S = os.path.join(c.RESULTS_DIR, "controlXvalence_ch12-stats.csv")
 
 # load in data
 ser1 = pd.read_csv(import_fname1, usecols=[0,2],
@@ -31,9 +35,6 @@ ser1 = pd.read_csv(import_fname1, usecols=[0,2],
     ).rename_axis("post_id"
     ).dropna(
     ).astype(bool)
-
-
-
 
 # all this junk gets down to only the posts with just neg
 # or just pos themes (doesn't care how many themes within pos or neg)
@@ -52,11 +53,17 @@ df = pd.concat([ser1, ser2], axis=1, join="inner")
 # pd.merge(ser1, ser2, how="left", left_index=True, right_index=
 #     ...: True, validate="1:1")
 
+# stats
 expected, observed, stats = pg.chi2_independence(
     df, x="control", y="positive", correction=False)
 
+# export stats
+expected.to_csv(export_fname_chi2E, index=True)
+observed.to_csv(export_fname_chi2O, index=True)
+stats.to_csv(export_fname_chi2S, index=False)
 
-from statsmodels.graphics.mosaicplot import mosaic
+
+#### plot
 
 key_order = ["control", "positive"]
 
@@ -112,5 +119,6 @@ for ax in fig.get_axes():
     #         ch.set_horizontalalignment("left")
 
 
-plt.savefig(export_fname)
+# export plot
+plt.savefig(export_fname_plot)
 plt.close()
