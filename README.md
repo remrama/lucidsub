@@ -53,4 +53,7 @@ python highlights_table.py
 
 # export some descriptive values to include in Results text
 python theme_descriptives.py
+
+# generate jsonl file of all themed/surviving posts
+python csv2jsonl-themed.py
 ```
