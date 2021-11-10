@@ -83,7 +83,7 @@ def labelizer(key):
     box_txt = f"Expected: {expected_count}\nObserved: {observed_count}"
     return box_txt
 # labelizer = lambda key: None
-gridspec_kw = dict(top=.98, right=.98, bottom=.2, left=.2)
+gridspec_kw = dict(top=.98, right=.98, bottom=.22, left=.22)
 fig, ax = plt.subplots(figsize=(4,4),
     gridspec_kw=gridspec_kw)
 fig, rects = mosaic(
@@ -110,10 +110,10 @@ else:
 
 for ax in fig.get_axes():
     ax.spines["top"].set_visible(False)
-    ax.spines["left"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.spines["bottom"].set_visible(False)
-    ax.tick_params(left=False, bottom=False)
+    ax.spines["left"].set_position(("outward", 5))
+    ax.spines["bottom"].set_position(("outward", 5))
+    # ax.tick_params(left=False, bottom=False)
     # for ch in ax.get_children():
     #     if isinstance(ch, plt.Text):
     #         ch.set_horizontalalignment("left")
