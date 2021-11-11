@@ -68,8 +68,10 @@ stats.to_csv(export_fname_chi2S, index=False)
 key_order = ["control", "positive"]
 
 props = lambda key: { # ("True", "True") strings(?) tuple in key_order
-    "color": c.POS_COLOR if key[1]=="True" else c.NEG_COLOR,
-    "alpha": 1 if key[0]=="True" else .5,
+    # "color": c.POS_COLOR if key[1]=="True" else c.NEG_COLOR,
+    # "alpha": 1 if key[0]=="True" else .5,
+    "color": "gainsboro",
+    "alpha": 1,
 }
 # props = lambda key: {
 #     "color": "gray",
@@ -99,7 +101,7 @@ fig, rects = mosaic(
 # ax.set_ylabel(key_order[1])
 
 
-control_labels = ["Poor\ndream control", "Good\ndream control"]
+control_labels = ["Little to no\ndream control", "High\ndream control"]
 theme_labels = ["Negative\ntheme post", "Positive\ntheme post"]
 if key_order[0] == "control":
     ax.set_xticklabels(control_labels)
