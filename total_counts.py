@@ -92,6 +92,8 @@ for ax, th, col in zip(axes4drawing, themes, colors):
     ax.plot([1], [0], transform=ax.transAxes, **slash_args)
     ax.set_xbound(upper=84)
 
+axes[0].set_xlabel("Number of posts")
+
 
 # export
 plt.savefig(export_fname_plot)
