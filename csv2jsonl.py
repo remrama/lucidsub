@@ -3,13 +3,18 @@ and export as jsonl file for Doccano import.
 """
 import os
 import json
+import argparse
 import pandas as pd
 
 import config as c
 
 
-# MONTH_STR = "April"
-MONTH_STR = "July"
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", "--month", type=str, required=True)
+args = parser.parse_args()
+
+
+MONTH_STR = args.month
 
 
 import_fname = os.path.join(c.DATA_DIR, f"r-LucidDreaming_2019{MONTH_STR}+200.csv")

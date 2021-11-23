@@ -4,14 +4,27 @@ prior to manual coding.
 And get a few months for first pass at manual coding.
 """
 import os
+import argparse
 import pandas as pd
 
 import config as c
 
-# MONTH_STR = "April"
-# MONTH_DIG = "04"
-MONTH_STR = "July"
-MONTH_DIG = "07"
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", "--month", type=str, required=True)
+args = parser.parse_args()
+
+
+# this is clunky and stupid but just cleaning up and not gonna mess with it
+MONTH_STR = args.month
+if MONTH_STR == "April":
+    MONTH_DIG = "04"
+elif MONTH_STR == "July":
+    MONTH_DIG = "07"
+else:
+    raise ValueError("unexpected month argument")
+    
 
 import_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_20210607T232348.csv")
 export_fname = os.path.join(c.DATA_DIR, f"r-LucidDreaming_2019{MONTH_STR}+200.csv")
