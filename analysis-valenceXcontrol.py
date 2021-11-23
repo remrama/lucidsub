@@ -17,10 +17,10 @@ plt.rcParams["font.sans-serif"] = "Arial"
 
 import_fname1 = os.path.join(c.DATA_DIR, "doccano-20211110", "lsowin.csv")
 import_fname2 = os.path.join(c.RESULTS_DIR, "themes-highlights_table.csv")
-export_fname_plot = os.path.join(c.RESULTS_DIR, "plots", "controlXvalence.png")
-export_fname_chi2E = os.path.join(c.RESULTS_DIR, "controlXvalence_chi2-expected.csv")
-export_fname_chi2O = os.path.join(c.RESULTS_DIR, "controlXvalence_chi2-observed.csv")
-export_fname_chi2S = os.path.join(c.RESULTS_DIR, "controlXvalence_chi2-stats.csv")
+export_fname_plot = os.path.join(c.RESULTS_DIR, "plots", "valenceXcontrol.png")
+export_fname_chi2E = os.path.join(c.RESULTS_DIR, "valenceXcontrol_chi2-expected.csv")
+export_fname_chi2O = os.path.join(c.RESULTS_DIR, "valenceXcontrol_chi2-observed.csv")
+export_fname_chi2S = os.path.join(c.RESULTS_DIR, "valenceXcontrol_chi2-stats.csv")
 
 # load in data
 ser1 = pd.read_csv(import_fname1, usecols=[0,2],
