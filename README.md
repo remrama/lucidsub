@@ -50,21 +50,21 @@ python find_disagreements.py --version 2                # ==> RESULTS_DIR/doccan
 
 ```bash
 # export the final totals in csv and png
-python total_counts.py              # ==> RESULTS_DIR/themes-total_counts.csv
-                                    # ==> RESULTS_DIR/posts/themes-total_counts.png
+python total_counts.py                                  # ==> RESULTS_DIR/themes-total_counts.csv
+                                                        # ==> RESULTS_DIR/posts/themes-total_counts.png
 
 # export the highlighted sections to browse for examples
-python highlights_table.py          # ==> RESULTS_DIR/themes-highlights_table.csv
+python highlights_table.py                              # ==> RESULTS_DIR/themes-highlights_table.csv
 
 # export some descriptive values to include in Results text
-python theme_descriptives.py        # ==> RESULTS_DIR/themes-descriptives.csv
-                                    # ==> RESULTS_DIR/themes-descriptives.json
+python theme_descriptives.py                            # ==> RESULTS_DIR/themes-descriptives.csv
+                                                        # ==> RESULTS_DIR/themes-descriptives.json
 
 # export a plot and stats comparing the frequency of pos-only vs neg-only
-python analysis-valence             # ==> RESULTS_DIR/plots/valence.png
+python analysis-valence                                 # ==> RESULTS_DIR/plots/valence.png
 
 # generate jsonl file of all themed/surviving posts
-python csv2jsonl-themed.py          # ==> RESULTS_DIR/themed_posts.jsonl
+python csv2jsonl-themed.py                              # ==> RESULTS_DIR/themed_posts.jsonl
 ```
 
 --> leave code land and back to Doccano for a few more ratings
@@ -73,8 +73,10 @@ python csv2jsonl-themed.py          # ==> RESULTS_DIR/themed_posts.jsonl
 * Rate each post as containing a dream experience or not.
 
 ```bash
-python analysis-valenceXcontrol.py  # ==> RESULTS_DIR/valenceXcontrol_chi2-expected.csv
-                                    # ==> RESULTS_DIR/valenceXcontrol_chi2-observed.csv
-                                    # ==> RESULTS_DIR/valenceXcontrol_chi2-stats.csv
-                                    # ==> RESULTS_DIR/plots/valenceXcontrol.png
+python analysis-valenceXvar.py --var control            # ==> RESULTS_DIR/plots/valenceXcontrol.png
+                                                        # ==> RESULTS_DIR/valenceXcontrol_chi2-freq.csv
+                                                        # ==> RESULTS_DIR/valenceXcontrol_chi2-stat.csv
+python analysis-valenceXvar.py --var ldexp              # ==> RESULTS_DIR/plots/valenceXldexp.png
+                                                        # ==> RESULTS_DIR/valenceXldexp_chi2-freq.csv
+                                                        # ==> RESULTS_DIR/valenceXldexp_chi2-stat.csv
 ```
