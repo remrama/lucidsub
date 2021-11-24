@@ -25,8 +25,8 @@ python clean_reddit.py --month July                     # ==> DATA_DIR/r-LucidDr
 
 # convert initial reddit download from csv to jsonl
 # (for uploading to Doccano)
-python csv2jsonl.py  --month April                      # ==> DATA_DIR/r-LucidDreaming_2019April+200.jsonl
-python csv2jsonl.py  --month July                       # ==> DATA_DIR/r-LucidDreaming_2019July+200.jsonl
+python csv2jsonl.py --month April                       # ==> DATA_DIR/r-LucidDreaming_2019April+200.jsonl
+python csv2jsonl.py --month July                        # ==> DATA_DIR/r-LucidDreaming_2019July+200.jsonl
 ```
 
 --> leave code land and annotate posts on Doccano
