@@ -14,16 +14,19 @@ Project exploring [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) for
 
 ```bash
 # grab r/LucidDreaming posts from reddit
-python scrape_reddit.py                     # ==> DATA_DIR/r-LucidDreaming_<timestamp>.csv
+python scrape_reddit.py                                 # ==> DATA_DIR/r-LucidDreaming_<timestamp>.csv
+
+# draw a plot of post frequency over time
+python plot_reddit.py                                   # ==> RESULTS_DIR/plots/reddit-postfrequency.png
 
 # clean up a bit and reduce to 200
-python clean_reddit.py --month April        # ==> DATA_DIR/r-LucidDreaming_2019April+200.csv
-python clean_reddit.py --month July         # ==> DATA_DIR/r-LucidDreaming_2019July+200.csv
+python clean_reddit.py --month April                    # ==> DATA_DIR/r-LucidDreaming_2019April+200.csv
+python clean_reddit.py --month July                     # ==> DATA_DIR/r-LucidDreaming_2019July+200.csv
 
 # convert initial reddit download from csv to jsonl
 # (for uploading to Doccano)
-python csv2jsonl.py  --month April          # ==> DATA_DIR/r-LucidDreaming_2019April+200.jsonl
-python csv2jsonl.py  --month July           # ==> DATA_DIR/r-LucidDreaming_2019July+200.jsonl
+python csv2jsonl.py  --month April                      # ==> DATA_DIR/r-LucidDreaming_2019April+200.jsonl
+python csv2jsonl.py  --month July                       # ==> DATA_DIR/r-LucidDreaming_2019July+200.jsonl
 ```
 
 --> leave code land and annotate posts on Doccano
@@ -51,7 +54,7 @@ python find_disagreements.py --version 2                # ==> RESULTS_DIR/doccan
 ```bash
 # export the final totals in csv and png
 python total_counts.py                                  # ==> RESULTS_DIR/themes-total_counts.csv
-                                                        # ==> RESULTS_DIR/posts/themes-total_counts.png
+                                                        # ==> RESULTS_DIR/plots/themes-total_counts.png
 
 # export the highlighted sections to browse for examples
 python highlights_table.py                              # ==> RESULTS_DIR/themes-highlights_table.csv
