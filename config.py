@@ -19,5 +19,5 @@ MONTHS = {
     "v2" : "July"
 }
 
-POS_COLOR = "#4CAF50"
-NEG_COLOR = "#F44336"
+POS_COLOR = "#5CC586"
+NEG_COLOR = "#D4488F"
