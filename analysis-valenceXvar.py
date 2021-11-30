@@ -40,9 +40,9 @@ export_fname_stat = os.path.join(c.RESULTS_DIR, f"valenceX{VAR}_chi2-stat.csv")
 ser1 = pd.read_csv(import_fname1, usecols=[0,2], index_col="id", squeeze=True)
 
 
-key_order = ["positive", VAR]
+key_order = ["negative", VAR]
 VALENCE_AX_LABEL = "Post valence"
-VALENCE_TICK_LABELS = ["negative", "positive"]
+VALENCE_TICK_LABELS = ["positive", "negative"]
 
 
 if VAR == "control":
@@ -76,9 +76,9 @@ ser1 = ser1.rename(VAR
 # or just pos themes (doesn't care how many themes within pos or neg)
 ser2 = pd.read_csv(import_fname2, usecols=[0,1],
         index_col="post_id", squeeze=True
-    ).replace(c.POS_THEMES, True
-    ).replace(c.NEG_THEMES, False
-    ).rename("positive"
+    ).replace(c.POS_THEMES, False
+    ).replace(c.NEG_THEMES, True
+    ).rename("negative"
     ).reset_index(
         ).drop_duplicates(subset=None, # drop duplicated pos or neg within post
         ).drop_duplicates(subset="post_id", keep=False # drop all posts with pos and neg
@@ -116,7 +116,7 @@ stats.to_csv(export_fname_stat, index=False)
 #### plot
 
 props = lambda key: { # ("True", "True") strings(?) tuple in key_order
-    "color": c.POS_COLOR if key[0]=="True" else c.NEG_COLOR,
+    "color": c.NEG_COLOR if key[0]=="True" else c.POS_COLOR,
     # "alpha": 1 if key[0]=="True" else .5,
     # "color": "gainsboro",
     "alpha": 1,
@@ -150,9 +150,7 @@ fig, rects = mosaic(
     labelizer=labelizer,
 )
 
-ax.invert_xaxis() # to flip pos/neg on x axis
-
-if key_order[0] == "positive": # valence on x axis
+if key_order[0] == "negative": # valence on x axis
     ax.set_xlabel(VALENCE_AX_LABEL)
     ax.set_ylabel(AX_LABEL)
     ax.set_xticklabels(VALENCE_TICK_LABELS)
