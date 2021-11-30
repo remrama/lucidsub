@@ -72,20 +72,20 @@ ax.xaxis.set(major_locator=mdates.YearLocator(),
 ax.set_axisbelow(True)
 
 
-######## draw shading at periods of data collection
+# ######## draw shading at periods of data collection
 
-COLLECTION_DATES = ["2019-04-01", "2019-07-01"]
-COLLECTION_TEXT = ["200 April posts", "200 July posts"]
+# COLLECTION_DATES = ["2019-04-01", "2019-07-01"]
+# COLLECTION_TEXT = ["200 April posts", "200 July posts"]
 
-LINE_ARGS = dict(color="k", lw=1, ls="dashed", zorder=0)
-TEXT_ARGS = dict(ha="left", va="top", fontsize=10)
+# LINE_ARGS = dict(color="k", lw=1, ls="dashed", zorder=0)
+# TEXT_ARGS = dict(ha="left", va="top", fontsize=10)
 
-for i, date_str in enumerate(COLLECTION_DATES):
-    xval = pd.to_datetime(date_str)
-    ax.axvline(xval, **LINE_ARGS)
-    yval = .95 - i*.07
-    txt = " " + COLLECTION_TEXT[i]
-    ax.text(xval, yval, txt, transform=ax.get_xaxis_transform(), **TEXT_ARGS)
+# for i, date_str in enumerate(COLLECTION_DATES):
+#     xval = pd.to_datetime(date_str)
+#     ax.axvline(xval, **LINE_ARGS)
+#     yval = .95 - i*.07
+#     txt = " " + COLLECTION_TEXT[i]
+#     ax.text(xval, yval, txt, transform=ax.get_xaxis_transform(), **TEXT_ARGS)
 
 
 

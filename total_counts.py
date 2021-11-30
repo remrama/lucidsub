@@ -48,50 +48,24 @@ BAR_ARGS = {
 
 themes = (sorted(c.POS_THEMES), sorted(c.NEG_THEMES))
 colors = (c.POS_COLOR, c.NEG_COLOR)
-
+titles = ("Positive themes", "Negative themes")
 
 # generate axes for pos and neg themes (and extras for showing the max)
-_, axes = plt.subplots(ncols=4, figsize=(6,2.5),
-    constrained_layout=True,
-    gridspec_kw={"width_ratios":[1, .05, 1, .05]})
-
-# separate into axes for drawing and those for showing the max amount
-axes4drawing = (axes[0], axes[2])
-axes4nothing = (axes[1], axes[3])
-
-# stuff for drawing little slashy lines
-EXTENT = 2.5 # proportion of vertical to horizontal extent of the slanted line
-slash_args = {
-    "marker" : [(-1, -EXTENT), (1, EXTENT)],
-    "markersize" : 7,
-    "linestyle" : "none",
-    "color" : "k",
-    "mec" : "k",
-    "mew" : 1,
-    "clip_on" : False,
-}
-
-# draw slashy lines on the "extra" axes
-for ax in axes4nothing:
-    ax.spines["left"].set_visible(False)
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.tick_params(left=False, labelleft=False)
-    ax.plot([0], [0], transform=ax.transAxes, **slash_args)
-    ax.set_xbound(lower=396, upper=400)
-    ax.set_xticks([400])
+_, axes = plt.subplots(ncols=2, figsize=(6,2.5),
+    sharex=True, constrained_layout=True,
+    gridspec_kw=dict(wspace=.1))
 
 # draw data
-for ax, th, col in zip(axes4drawing, themes, colors):
+for ax, th, col, titl in zip(axes, themes, colors, titles):
     ax.barh(th, counts.loc[th], color=col, **BAR_ARGS)
     ax.invert_yaxis()
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.xaxis.set(major_locator=plt.MultipleLocator(20),
         minor_locator=plt.MultipleLocator(5))
-    ax.plot([1], [0], transform=ax.transAxes, **slash_args)
-    ax.set_xbound(upper=84)
+    ax.set_title(titl, fontsize=10, weight="bold")
 
+ax.set_xbound(upper=80)
 axes[0].set_xlabel("Number of posts")
 
 
