@@ -53,6 +53,9 @@ python find_disagreements.py --version 2                # ==> RESULTS_DIR/doccan
 --> leave code land and resolve disputes in excel
 
 ```bash
+# export a counts of pos-only vs neg-only and stats comparing them 
+python analysis-valence.py                              # ==> RESULTS_DIR/valence.json
+
 # export the final totals in csv and png
 python total_counts.py                                  # ==> RESULTS_DIR/themes-total_counts.csv
                                                         # ==> RESULTS_DIR/plots/themes-total_counts.png
@@ -64,10 +67,7 @@ python highlights_table.py                              # ==> RESULTS_DIR/themes
 python theme_descriptives.py                            # ==> RESULTS_DIR/themes-descriptives.csv
                                                         # ==> RESULTS_DIR/themes-descriptives.json
 
-# export a plot and stats comparing the frequency of pos-only vs neg-only
-python analysis-valence                                 # ==> RESULTS_DIR/plots/valence.png
-
-# generate jsonl file of all themed/surviving posts
+# generate jsonl file of all themed/surviving posts, for next step ratings
 python csv2jsonl-themed.py                              # ==> RESULTS_DIR/themed_posts.jsonl
 ```
 
