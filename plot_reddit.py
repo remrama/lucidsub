@@ -1,5 +1,7 @@
 """
 show general r/LucidDreaming post frequency
+
+and panel for content analysis methods
 """
 import os
 import pandas as pd
@@ -8,6 +10,7 @@ import config as c
 import seaborn as sea
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import matplotlib.patches as mpatches
 plt.rcParams["savefig.dpi"] = 600
 plt.rcParams["interactive"] = True
 plt.rcParams["font.family"] = "sans-serif"
@@ -43,14 +46,22 @@ n_bins = n_years * 12 # to get 1 bin/tick per month
 binrange = (mdates.date2num(XMIN), mdates.date2num(XMAX))
 
 
-_, ax = plt.subplots(figsize=(6, 3), constrained_layout=True)
+FIGSIZE = (7.5, 3)
+fig, (ax, ax2) = plt.subplots(ncols=2, figsize=FIGSIZE,
+    gridspec_kw=dict(left=.1, right=1, bottom=.15, top=.95,
+        wspace=.1, width_ratios=[2.5, 1]))
+fig.text(0, 1, "A", fontsize=12, fontweight="bold", ha="left", va="top")
+fig.text(.75, 1, "B", fontsize=12, fontweight="bold", ha="left", va="top")
+
+
 
 sea.histplot(data=df, x="timestamp",
     bins=n_bins, binrange=binrange,
     stat="count", cumulative=False,
     element="bars", fill=True,
     color="gainsboro", alpha=1,
-    linewidth=.5, edgecolor="black")
+    linewidth=.5, edgecolor="black",
+    ax=ax)
 
 ###### aesthetics
 ax.set_xlabel("date (year)")
@@ -86,6 +97,93 @@ ax.set_axisbelow(True)
 #     yval = .95 - i*.07
 #     txt = " " + COLLECTION_TEXT[i]
 #     ax.text(xval, yval, txt, transform=ax.get_xaxis_transform(), **TEXT_ARGS)
+
+
+############################# PANEL B -- content analysis box/arrows methods diagram
+
+# draw 3 boxes in a row
+leftest = .05
+highest = .98
+boxwidth = .75
+boxheight = .25
+boxgap = .1
+texts = [
+    ("Develop themes\n"
+    + "from prior research\n"
+    + "and r/LucidDreaming"),
+
+    ("Raters code subset\n"
+    + "of posts for old\n"
+    + "and new themes"),
+
+    ("Meet, discuss\n"
+    + "and adjust based\n"
+    + "on new insights"),
+]
+xpositions = [leftest] * 3
+ypositions = [ highest - (i+1)*boxheight - i*boxgap for i in range(3) ]
+boxstyle = "round, pad=0"
+transform = ax2.transAxes
+
+arrowstyle = "Simple, tail_width=0.5, head_width=4, head_length=8"
+arrow_kw = dict(arrowstyle=arrowstyle, color="k", lw=1)
+
+ax2.set_xlim(0, 1)
+ax2.set_ylim(0, 1)
+ax2.axis("off")
+left_txtbuff = .01
+
+for txt, x, y in zip(texts, xpositions, ypositions):
+
+    # easiest solution is to draw text and box at ONCE with a textbox
+    # but it's tough to set the width of the box (it fits to text)
+    # textbox_props = dict(boxstyle="round", facecolor="wheat", alpha=0.5)
+    # t = ax.text(x, y, txt, transform=ax.transAxes,
+    #     fontsize=10, va="bottom", ha="left",
+    #     bbox=textbox_props)
+    # bb = t.get_bbox_patch()
+
+    # draw box
+    bottomleft_xy = (x, y) # lower left corner of box
+    rect = mpatches.FancyBboxPatch(
+        bottomleft_xy,
+        boxwidth, boxheight, facecolor="white",
+        boxstyle=boxstyle, transform=transform)
+    ax2.add_patch(rect)
+
+    # draw text
+    text_x = x+left_txtbuff
+    text_y = y+boxheight/2
+    ax2.text(text_x, text_y, txt,
+        transform=transform,
+        fontsize=10, ha="left", va="center")
+
+
+    # draw arrow
+    if txt.startswith("Meet"):
+        # curved arrow going back up
+        arrow_xy1 = (x+boxwidth, y+boxheight/2) # middle right of this box
+        arrow_xy2 = (x+boxwidth, y+boxheight*1.5+boxgap) # middle right of next box
+        arrow = mpatches.FancyArrowPatch(
+            arrow_xy1, arrow_xy2,
+            connectionstyle="arc3,rad=.5", **arrow_kw)
+    else:
+        arrow_xy1 = (x+boxwidth/2, y) # bottom of this box
+        arrow_xy2 = (x+boxwidth/2, y-boxgap) # top of next box
+        arrow = mpatches.FancyArrowPatch(
+            arrow_xy1, arrow_xy2, **arrow_kw)
+    ax2.add_patch(arrow)
+
+    # add extra text for step 4
+    if txt.startswith("Meet"):
+        step4txt = "Repeat as needed"
+        vert_x = x+boxwidth+.1 # some guessing to get past the curved arrow bump
+        vert_y = y+boxheight+boxgap/2
+        ax2.text(vert_x, vert_y, step4txt,
+            transform=transform,
+            rotation=270,
+            fontsize=10, ha="left", va="center")
+
 
 
 
