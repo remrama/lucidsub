@@ -77,10 +77,9 @@ python csv2jsonl-themed.py                              # ==> RESULTS_DIR/themed
 * Rate each post as containing a dream experience or not.
 
 ```bash
-python analysis-valenceXvar.py --var control            # ==> RESULTS_DIR/plots/valenceXcontrol.png
+python analysis-valenceXvar.py                          # ==> RESULTS_DIR/plots/valenceXvar.png
                                                         # ==> RESULTS_DIR/valenceXcontrol_chi2-freq.csv
                                                         # ==> RESULTS_DIR/valenceXcontrol_chi2-stat.csv
-python analysis-valenceXvar.py --var ldexp              # ==> RESULTS_DIR/plots/valenceXldexp.png
                                                         # ==> RESULTS_DIR/valenceXldexp_chi2-freq.csv
                                                         # ==> RESULTS_DIR/valenceXldexp_chi2-stat.csv
 ```
