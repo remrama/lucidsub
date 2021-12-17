@@ -9,6 +9,7 @@ Project exploring [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) for
 
 * `config.py` is where things like the data directory are specified
 * `guideline.md` has the detailed descriptions of all themes
+* `methods_diagram.py` output a box/arrow figure describing the content analysis
 
 ### Linear files
 

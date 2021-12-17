@@ -1,15 +1,22 @@
 """trying out a box and arrow diagram in matplotlib
 """
+import os
+import config as c
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-
 plt.rcParams["savefig.dpi"] = 600
 plt.rcParams["interactive"] = True
+plt.rcParams["font.family"] = "sans-serif"
+plt.rcParams["font.sans-serif"] = "Arial"
 
 
-FIGSIZE = (3, 3)
+export_fname = os.path.join(c.RESULTS_DIR, "plots", "methods-content_analysis.png")
 
-fig, ax = plt.subplots(figsize=FIGSIZE,
+
+FIGSIZE = (2.8, 3)
+
+_, ax = plt.subplots(figsize=FIGSIZE,
     gridspec_kw=dict(top=1, bottom=0, left=0, right=1))
 
 # draw 3 boxes in a row
@@ -97,47 +104,8 @@ for txt, x, y in zip(texts, xpositions, ypositions):
             transform=ax.transAxes,
             rotation=270,
             fontsize=10, ha="left", va="center")
-    # arrowx = x+boxwidth
-    # arrowy = y+boxheight/2
-    # arrow = mpatches.FancyArrow(arrowx, arrowy,
-    #     dx=boxgap, dy=0,
-    #     width=.01, length_includes_head=True,
-    #     head_width=.03, head_length=.05,
-    #     shape="full",
-    #     ls="-", lw=1, ec="black",
-    #     color="white")
-
-
-# ax.annotate("Annotation",
-#     xy=(.5, .5), xycoords="data",
-#     xytext=(.1, .1), textcoords="data",
-#     arrowprops=dict(arrowstyle="->",
-#                     connectionstyle="arc3"),
-# )
 
 
 
-
-
-
-# a1 = patches.FancyArrowPatch((-0.4, -0.6), (0, 0.6), **kw)
-# a2 = patches.FancyArrowPatch((0, 0.6), (0.4, -0.6), **kw)
-# a3 = patches.FancyArrowPatch((-0.4, -0.6), (0.4, -0.6),
-#                              connectionstyle="arc3,rad=.5", **kw)
-
-
-
-
-# arrowprops = dict(arrowstyle="->",
-#     connectionstyle="arc3")
-# ax.annotate("blankintheend",
-#     xy=xy1, xycoords="data",
-#     xytext=xy2, textcoords="data",
-#     arrowprops=arrowprops,
-# )
-
-
-
-
-# plt.savefig("./test.png")
-# plt.close()
+plt.savefig(export_fname)
+plt.close()

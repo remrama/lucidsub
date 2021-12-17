@@ -1,6 +1,6 @@
 
-DATA_DIR = r"C:\Users\rrm2308\data\lucidsub"
-RESULTS_DIR = r"C:\Users\rrm2308\data\lucidsub\derivatives"
+DATA_DIR = r"C:\Users\malle\PROJECTS\lucidsub\data"
+RESULTS_DIR = r"C:\Users\malle\PROJECTS\lucidsub\data\derivatives"
 
 CODERS = ["remym", "lsowin", "rraider"]
 
