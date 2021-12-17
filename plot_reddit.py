@@ -19,6 +19,7 @@ plt.rcParams["font.sans-serif"] = "Arial"
 
 import_fname = os.path.join(c.DATA_DIR, "r-LucidDreaming_20210607T232348.csv")
 export_fname = os.path.join(c.RESULTS_DIR, "plots", "reddit-postfrequency.png")
+export_fname_txt = os.path.join(c.RESULTS_DIR, "reddit-postfrequency.txt")
 
 ### load and manipulate data a bit
 
@@ -30,6 +31,14 @@ df = df.sort_values("timestamp", ascending=True).reset_index(drop=True)
 # remove deleted posts, removed posts, and posts without any text
 df = df[ ~df["selftext"].isin(["[deleted]", "[removed]"]) ]
 df = df.dropna(subset=["selftext"])
+
+
+# save out a mean post frequency, for manuscript txt
+monthly_mean = df.groupby(pd.Grouper(freq="M", key="timestamp")
+    ).size().loc["2015":"2019"].mean().round(1)
+mean_txt = f"Monthly mean from 2015 to 2019 is {monthly_mean}"
+with open(export_fname_txt, "wt", encoding="utf-8") as f:
+    f.write(mean_txt)
 
 
 YMAX = 4000
@@ -113,11 +122,11 @@ texts = [
     + "and r/LucidDreaming"),
 
     ("Raters code subset\n"
-    + "of posts for old\n"
-    + "and new themes"),
+    + "of posts for old and\n"
+    + "new themes"),
 
-    ("Meet, discuss\n"
-    + "and adjust based\n"
+    ("Meet, discuss, and\n"
+    + "adjust themes based\n"
     + "on new insights"),
 ]
 xpositions = [leftest] * 3

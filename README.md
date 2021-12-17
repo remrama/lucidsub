@@ -19,6 +19,7 @@ python scrape_reddit.py                                 # ==> DATA_DIR/r-LucidDr
 
 # draw a plot of post frequency over time
 python plot_reddit.py                                   # ==> RESULTS_DIR/plots/reddit-postfrequency.png
+                                                        # ==> RESULTS_DIR/reddit-postfrequency.txt
 
 # clean up a bit and reduce to 200
 python clean_reddit.py --month April                    # ==> DATA_DIR/r-LucidDreaming_2019April+200.csv
