@@ -35,8 +35,8 @@ df = df.dropna(subset=["selftext"])
 
 # save out a mean post frequency, for manuscript txt
 monthly_mean = df.groupby(pd.Grouper(freq="M", key="timestamp")
-    ).size().loc["2015":"2019"].mean().round(1)
-mean_txt = f"Monthly mean from 2015 to 2019 is {monthly_mean}"
+    ).size().loc["2015":"2019"].mean()
+mean_txt = f"Monthly mean from 2015 to 2019 is {monthly_mean:.1f}"
 with open(export_fname_txt, "wt", encoding="utf-8") as f:
     f.write(mean_txt)
 
@@ -58,9 +58,9 @@ binrange = (mdates.date2num(XMIN), mdates.date2num(XMAX))
 FIGSIZE = (7.5, 3)
 fig, (ax, ax2) = plt.subplots(ncols=2, figsize=FIGSIZE,
     gridspec_kw=dict(left=.1, right=1, bottom=.15, top=.95,
-        wspace=.1, width_ratios=[2.5, 1]))
+        wspace=.1, width_ratios=[2.3, 1]))
 fig.text(0, 1, "A", fontsize=12, fontweight="bold", ha="left", va="top")
-fig.text(.75, 1, "B", fontsize=12, fontweight="bold", ha="left", va="top")
+fig.text(.73, 1, "B", fontsize=12, fontweight="bold", ha="left", va="top")
 
 
 
@@ -186,7 +186,7 @@ for txt, x, y in zip(texts, xpositions, ypositions):
     # add extra text for step 4
     if txt.startswith("Meet"):
         step4txt = "Repeat as needed"
-        vert_x = x+boxwidth+.1 # some guessing to get past the curved arrow bump
+        vert_x = x+boxwidth+.13 # some guessing to get past the curved arrow bump
         vert_y = y+boxheight+boxgap/2
         ax2.text(vert_x, vert_y, step4txt,
             transform=transform,
