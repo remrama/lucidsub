@@ -1,86 +1,95 @@
 # lucidsub
 
-Project exploring [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) for expressions of positive and negative experiences with lucid dreaming.
+This is code for a project exploring the positive and negative experiences around lucid dreaming. It involves running a content analysis on posts scraped from the [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) subreddit. The content analysis is qualitative/manual, so code here is for other steps, like scraping/cleaning the data, aggregating the content analysis output, statistics, and visualizations. 
 
 
-## Code/file descriptions
+
+## Code and file descriptions
+
 
 ### Non-linear files
 
-* `config.py` is where things like the data directory are specified
-* `guideline.md` has the detailed descriptions of all themes
-* `methods_diagram.py` output a box/arrow figure describing the content analysis
+* `config.json` is where constants like the data directory are specified.
+* `utils.py` is where generally useful python functions are stored.
+* `guideline.md` has detailed descriptions of all the final themes.
+
 
 ### Linear files
 
 ```bash
-# grab r/LucidDreaming posts from reddit
-python scrape_reddit.py                                 # ==> DATA_DIR/r-LucidDreaming_<timestamp>.csv
+# Generate the data/results directory structure that all files expect.
+python setup-directory_structure.py             # ==> data/source/
+                                                # ==> data/derivatives/
+                                                # ==> data/results/
+                                                # ==> data/results/hires/
 
-# draw a plot of post frequency over time
-python plot_reddit.py                                   # ==> RESULTS_DIR/plots/reddit-postfrequency.png
-                                                        # ==> RESULTS_DIR/reddit-postfrequency.txt
-
-# clean up a bit and reduce to 200
-python clean_reddit.py --month April                    # ==> DATA_DIR/r-LucidDreaming_2019April+200.csv
-python clean_reddit.py --month July                     # ==> DATA_DIR/r-LucidDreaming_2019July+200.csv
-
-# convert initial reddit download from csv to jsonl
-# (for uploading to Doccano)
-python csv2jsonl.py --month April                       # ==> DATA_DIR/r-LucidDreaming_2019April+200.jsonl
-python csv2jsonl.py --month July                        # ==> DATA_DIR/r-LucidDreaming_2019July+200.jsonl
+# Grab all r/LucidDreaming posts from Reddit.
+python scrape-reddit.py                         # ==> data/source/r-LucidDreaming_<timestamp>.csv
+                                                # ==> data/source/r-LucidDreaming_<timestamp>.pkl
 ```
 
---> leave code land and annotate posts on Doccano
+**Manual step.** The output file from `scrape-reddit.py` includes a timestamp. Copy/paste that into the `config.json` configuration file, so other scripts can find it.
 
 ```bash
-# convert Doccano ratings to usable csv
-python doccano2csv.py --version 1                       # ==> RESULTS_DIR/doccano-postXtheme_v1.csv
-                                                        # ==> RESULTS_DIR/doccano-postXthemecoder_v1.csv
-python doccano2csv.py --version 2                       # ==> RESULTS_DIR/doccano-postXtheme_v2.csv
-                                                        # ==> RESULTS_DIR/doccano-postXthemecoder_v2.csv
+# Draw a plot of all-time r/LucidDreaming post frequency.
+python plot-methods.py                          # ==> data/results/methods.png
+                                                # ==> data/results/post_frequency.txt
 
-# visualize how often coders (dis)agreed
-python plot-agreement_postXtheme.py --version 1         # ==> RESULTS_DIR/doccano-postXtheme_v1.png
-python plot-agreement_postXtheme.py --version 2         # ==> RESULTS_DIR/doccano-postXtheme_v2.png
-python plot-agreement_postXthemeXcoder.py --version 1   # ==> RESULTS_DIR/doccano-postXthemeXcoder_v1.png
-python plot-agreement_postXthemeXcoder.py --version 2   # ==> RESULTS_DIR/doccano-postXthemeXcoder_v2.png
-
-# export a csv with only disagreements, for discussion
-python find_disagreements.py --version 1                # ==> RESULTS_DIR/doccano-disagreements2solve_v1.csv
-python find_disagreements.py --version 2                # ==> RESULTS_DIR/doccano-disagreements2solve_v2.csv
+# Clean up the Reddit data a bit and reduce it to 2 batches of 200 posts.
+# Include a jsonl file with each output, for uploading to Doccano.
+python clean-reddit.py --month april            # ==> data/derivatives/r-LucidDreaming_2019April+200.csv
+                                                # ==> data/derivatives/r-LucidDreaming_2019April+200.jsonl
+python clean-reddit.py --month july             # ==> data/derivatives/r-LucidDreaming_2019July+200.csv
+                                                # ==> data/derivatives/r-LucidDreaming_2019July+200.jsonl
 ```
 
---> leave code land and resolve disputes in excel
+**Manual step.** Code posts on [Doccano](https://doccano.herokuapp.com/). Once finished, save the main Doccano output folders in the `data/source/` directory and rename them to `data/source/doccano-2019April` and `data/source/doccano-2019July`.
 
 ```bash
-# export a counts of pos-only vs neg-only and stats comparing them 
-python analysis-valence.py                              # ==> RESULTS_DIR/valence.json
+# Convert Doccano ratings to useful csv files.
+python doccano2csv.py --month april             # ==> data/derivatives/doccano-postXtheme_2019April.csv
+                                                # ==> data/derivatives/doccano-postXthemeXcoder_2019April.csv
+                                                # ==> data/derivatives/doccano-disagreements_2019April.csv
+python doccano2csv.py --month july              # ==> data/derivatives/doccano-postXtheme_2019July.csv
+                                                # ==> data/derivatives/doccano-postXthemeXcoder_2019July.csv
+                                                # ==> data/derivatives/doccano-disagreements_2019July.csv
 
-# export the final totals in csv and png
-python total_counts.py                                  # ==> RESULTS_DIR/themes-total_counts.csv
-                                                        # ==> RESULTS_DIR/plots/themes-total_counts.png
+# Visuale how often coders (dis)agree.
+python plot-postXtheme.py --month april         # ==> data/results/doccano-postXtheme_2019April.png
+python plot-postXtheme.py --month july          # ==> data/results/doccano-postXtheme_2019July.png
+python plot-postXthemeXcoder.py --month april   # ==> data/results/doccano-postXthemeXcoder_2019April.png
+python plot-postXthemeXcoder.py --month july    # ==> data/results/doccano-postXthemeXcoder_2019July.png
+```
 
-# export the highlighted sections to browse for examples
-python highlights_table.py                              # ==> RESULTS_DIR/themes-highlights_table.csv
+**Manual step.** Leave code and resolve final disputes. Save as `data/source/doccano-disagreements_2019April-DONE.xlsx` and `data/source/doccano-disagreements_2019July-DONE.xlsx`.
 
+```bash
+# Export table and visualization of final theme frequencies (across both versions/months).
+python analysis-theme_frequencies.py            # ==> data/results/themes-frequencies.csv
+python plot-theme_frequencies.py                # ==> data/results/themes-frequencies.png
+
+# Compare frequencies of *only* positive and only negative posts, and visualize.
+# And generate 2 other files related to these "only" posts for later use.
+python analysis-theme_valence.py                # ==> data/results/themes-valence.csv
+                                                # ==> data/derivatives/themes-valence.json
+                                                # ==> data/derivatives/themes-valence.jsonl
+python plot-theme_valence.py                    # ==> data/results/themes-valence.png
+
+# Generate some descriptive values for each theme and the overall corpus.
 # export some descriptive values to include in Results text
-python theme_descriptives.py                            # ==> RESULTS_DIR/themes-descriptives.csv
-                                                        # ==> RESULTS_DIR/themes-descriptives.json
+python analysis-descriptives.py                 # ==> data/results/themes-descriptives.csv
+                                                # ==> data/results/corpus-descriptives.csv
 
-# generate jsonl file of all themed/surviving posts, for next step ratings
-python csv2jsonl-themed.py                              # ==> RESULTS_DIR/themed_posts.jsonl
+# Export a table with all highlighted/"themed" content to browse for examples.
+python generate_highlights_table.py             # ==> data/derivatives/themes-highlights.csv
 ```
 
---> leave code land and back to Doccano for a few more ratings
-
-* Rate each post as having either high or "little-to-no" dream control (or not enough info).
-* Rate each post as containing a dream experience or not.
+**Manual step.** Code posts on [Doccano](https://doccano.herokuapp.com/). Once finished, save the main Doccano output folders in the `data/source/` directory and rename them to `data/source/doccano-control` and `data/source/doccano-lucidity`.
 
 ```bash
-python analysis-valenceXvar.py                          # ==> RESULTS_DIR/plots/valenceXvar.png
-                                                        # ==> RESULTS_DIR/valenceXcontrol_chi2-freq.csv
-                                                        # ==> RESULTS_DIR/valenceXcontrol_chi2-stat.csv
-                                                        # ==> RESULTS_DIR/valenceXldexp_chi2-freq.csv
-                                                        # ==> RESULTS_DIR/valenceXldexp_chi2-stat.csv
+python analysis-valenceXattributes.py           # ==> data/results/themes-valenceXattribute_freqs.csv
+                                                # ==> data/results/themes-valenceXattribute_stats.csv
+
+python plot-valenceXattribute.py -a control     # ==> data/results/themes-valenceXattribute_control.png
+python plot-valenceXattribute.py -a lucidity    # ==> data/results/themes-valenceXattribute_lucidity.png
 ```

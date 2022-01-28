@@ -1,0 +1,26 @@
+{
+    
+    "data_directory" : "../data",
+
+    "scrape_timestamp" : "20210607T232348",
+
+    "coders" : ["remym", "lsowin", "rraider"],
+
+    "themes" : {
+        "positive" : ["Nightmare resolution", "Positive waking mood",
+            "Dream enhancement", "Rehearsal", "Creativity/insight"],
+        "negative" : ["Sleep paralysis", "Reality confusion",
+            "Poor sleep", "Unwanted lucid dreams", "Lucid dysphoria"]
+    },
+
+    "colors" : {
+        "positive" : "#29cae7",
+        "negative" : "#fda094"
+    },
+
+    "version_identifiers" : {
+        "v1" : "2019April",
+        "v2" : "2019July"
+    }
+
+}

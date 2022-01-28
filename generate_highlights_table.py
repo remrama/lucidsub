@@ -1,40 +1,24 @@
-"""export all the examples
-with relevant highlighted excerpts pulled out
+"""Export a table with all highlighted (ie, "themed") content.
 
-to look through for table, and get a feel for Results
+It's not for analysis, but just to look through for examples.
 
-some code copy/pasted from total_counts.py and doccano2csv.py
+This code is a bit chaotic and not well-commented,
+but it's not for any formal analyses so...
 """
 import os
 import json
 import glob
 import string
 import pandas as pd
+import utils
 
-import config as c
+export_basename = "themes-highlights.csv"
+export_fullpath = os.path.join(utils.Config.data_directory, "derivatives", export_basename)
 
 
-export_fname = os.path.join(c.RESULTS_DIR, "themes-highlights_table.csv")
-
-
-def load_resolved_dataframe(version_number):
-    basename1 = f"doccano-postXtheme_v{version_number}.csv"
-    basename2 = f"doccano-disagreements2solve_v{version_number}-DONE.xlsx"
-    import_fname1 = os.path.join(c.RESULTS_DIR, basename1)
-    import_fname2 = os.path.join(c.RESULTS_DIR, basename2)
-    df1 = pd.read_csv(import_fname1, index_col="post_id")
-    df2 = pd.read_excel(import_fname2, index_col="post_id")
-    # binarize the original ratings so any post with all 3 is good
-    df1 = df1.eq(3)
-    # handle disagreement file
-    df2 = df2.loc[df2["keep"], ["theme", "keep"]].pivot(columns="theme"
-        ).droplevel(0, 1).reindex_like(df1).fillna(False)
-    # merge them
-    df = df1 | df2
-    return df
 
 # get a list of the post_id/theme combos in the final set
-final_df = pd.concat([ load_resolved_dataframe(v) for v in (1, 2) ])
+final_df = utils.load_final_post_themes(utils.Config)
 final_df = final_df.reset_index(drop=False
     ).melt(id_vars="post_id", var_name="theme", value_name="keep")
 final_df = final_df[final_df["keep"]].reset_index(drop=True).drop(columns="keep")
@@ -42,12 +26,13 @@ keepers = final_df.groupby("theme").post_id.apply(list).to_dict()
 
 # load in all the raw doccano output (for the highlights)
 # get a list of the 2 filenames from 2 different versions
-doccano_dirs = glob.glob(os.path.join(c.DATA_DIR, "doccano-*"))
+glob_str = os.path.join(utils.Config.data_directory, "source", "doccano-2019*")
+doccano_dirs = glob.glob(glob_str)
 assert len(doccano_dirs) == 2
 
 rows = []
 for d in doccano_dirs:
-    for coder in c.CODERS:
+    for coder in utils.Config.coders:
         import_fn = os.path.join(d, f"{coder}.jsonl")
         with open(import_fn, "r", encoding="utf-8") as f:
             coder_data = [ json.loads(l) for l in f.read().splitlines() ]
@@ -72,11 +57,11 @@ for d in doccano_dirs:
 df = pd.DataFrame(rows)
 
 coder_renaming = { c: "coder_"+string.ascii_uppercase[i]+"_txt"
-    for i, c in enumerate(c.CODERS) }
+    for i, c in enumerate(utils.Config.coders) }
 
 
 # get rid of unused themes from part 1
-theme_order = sorted(c.POS_THEMES) + sorted(c.NEG_THEMES)
+theme_order = sorted(utils.Config.themes.positive) + sorted(utils.Config.themes.negative)
 df = df[df["theme"].isin(theme_order)].reset_index(drop=True)
 
 
@@ -131,4 +116,4 @@ df = df.sort_values(
 column_order = ["post_id", "full_txt"] + coder_columns + ["n_coders_highlight"]
 df = df[column_order]
 
-df.to_csv(export_fname, index=True, na_rep="NA")
+df.to_csv(export_fullpath, index=True, na_rep="NA")
