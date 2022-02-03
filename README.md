@@ -96,3 +96,9 @@ python analysis-valenceXattributes.py           # ==> data/results/themes-valenc
 python plot-valenceXattribute.py -a control     # ==> data/results/themes-valenceXattribute_control.png
 python plot-valenceXattribute.py -a lucidity    # ==> data/results/themes-valenceXattribute_lucidity.png
 ```
+
+Upload data and code to [OSF](https://osf.io/bce8y/).
+
+```bash
+python up2osf.py
+```
