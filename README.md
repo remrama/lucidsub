@@ -1,6 +1,6 @@
 # lucidsub
 
-This is code for a project exploring the positive and negative experiences around lucid dreaming. It involves running a content analysis on posts scraped from the [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) subreddit. The content analysis is qualitative/manual, so code here is for other steps, like scraping/cleaning the data, aggregating the content analysis output, statistics, and visualizations. 
+This is code for a project exploring positive and negative experiences around lucid dreaming. It involves running a content analysis on posts scraped from the [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) subreddit. The content analysis is qualitative/manual, so code here is for other steps, like scraping/cleaning the data, aggregating the content analysis output, statistics, and visualizations. 
 
 
 
@@ -9,9 +9,12 @@ This is code for a project exploring the positive and negative experiences aroun
 
 ### Non-linear files
 
+* `environment.yml` was used to generate the Python environment where all this code was run.
 * `config.json` is where constants like the data directory are specified.
 * `utils.py` is where generally useful python functions are stored.
 * `guideline.md` has detailed descriptions of all the final themes.
+* `draw-method.py` saves a box&arrow methods figure.
+* `draw-model.py` saves a box&arrow model figure.
 
 
 ### Linear files
@@ -32,8 +35,8 @@ python scrape-reddit.py                         # ==> data/source/r-LucidDreamin
 
 ```bash
 # Draw a plot of all-time r/LucidDreaming post frequency.
-python plot-methods.py                          # ==> data/results/methods.png
-                                                # ==> data/results/post_frequency.txt
+python plot-post_frequency.py                   # ==> data/results/post-frequency.png
+                                                # ==> data/results/post-frequency.txt
 
 # Clean up the Reddit data a bit and reduce it to 2 batches of 200 posts.
 # Include a jsonl file with each output, for uploading to Doccano.

@@ -15,7 +15,8 @@ dependencies:
 
   - ipython                   # development
   - conda-forge::tqdm         # progress bars
-  
+  - conda-forge::osfclient    # uploading materials
+
   - numpy                     # data analysis
   - pandas                    # data analysis
   - scipy                     # data analysis
@@ -25,7 +26,8 @@ dependencies:
   - matplotlib                # data visualization
   - seaborn                   # data visualization
   - conda-forge::colorcet     # data visualization - colormaps
-
+  - python-graphviz           # visualization - box/arrow diagrams
+  
   - pip
   - pip:
     - psaw                    # web scraping - Reddit access
