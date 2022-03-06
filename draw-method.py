@@ -12,7 +12,7 @@ export_fname_hires = os.path.join(utils.Config.data_directory, "results", "hires
 
 LABELS = {
     "A" : "Develop themes\nfrom prior research\nand r/LucidDreaming",
-    "B" : "Raters code subset\nof posts for old and\nnew themes",
+    "B" : "Raters code a\nsubset of posts\nfor thematic content",
     "C" : "Meet, discuss, and\nadjust themes based\non new insights",
 }
 
@@ -50,7 +50,7 @@ for k, v in LABELS.items():
     g.node(k, label=v, xlabel=k)
 g.edge("A", "B", weight="1")
 g.edge("B", "C", weight="1")
-g.edge("C", "A", weight="0", label="Repeat as needed")
+g.edge("C", "B", weight="0", label="Repeat as needed")
 
 
 # Export.
