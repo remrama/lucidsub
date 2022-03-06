@@ -31,7 +31,12 @@ export_fullpath = os.path.join(utils.Config.data_directory, "results", export_ba
 import_basename = "themes-valenceXattribute_freqs.csv"
 import_fullpath = os.path.join(utils.Config.data_directory, "results", import_basename)
 
+import_fullpath_stats = import_fullpath.replace("_freqs.csv", "_stats.csv")
+
+
 df = pd.read_csv(import_fullpath, index_col="attribute")
+stats_df = pd.read_csv(import_fullpath_stats, index_col=["attribute", "test"])
+
 
 # Restructure data for mosaic plot.
 df = df.loc[ATTRIBUTE, ["valence", "present", "observed"]]
@@ -48,20 +53,24 @@ ser = df.set_index([ATTRIBUTE, "valence"]
     ).squeeze( # needs to be series for mosaic to acknowledge counts
     ).sort_index()
 
-# replacements = { k: v for k, v in zip([False, True], var_order) }
-# df[ATTRIBUTE] = df[ATTRIBUTE].replace(replacements)
+
+# Get stats values
+chi2val, pval = stats_df.loc[(ATTRIBUTE,"pearson"), ["chi2", "pval"]]
 
 
 ############### Plotting variables.
 
-FIGSIZE = (2.2, 2)
+FIGSIZE = (2.2, 1.8)
 w2h_ratio = FIGSIZE[0] / FIGSIZE[1]
 AX_LEFT = .26
 AX_WIDTH = .42
-AX_TOP = .7
+AX_TOP = .75
 ax_height = AX_WIDTH*w2h_ratio
 GRIDSPEC_KW = dict(left=AX_LEFT, right=AX_LEFT+AX_WIDTH,
     top=AX_TOP, bottom=AX_TOP-ax_height)
+
+SIG_XLOC = 1.05
+SIG_YLOC = .5
 
 palette = utils.load_config(as_object=False)["colors"]
 
@@ -126,6 +135,15 @@ legend = ax.legend(handles=handles,
 # legend._legend_box.sep = 2 # brings title up farther on top of handles/labels
 legend._legend_box.align = "left"
 
+
+# Add significance text.
+sigchars = "*" * sum([ pval<cutoff for cutoff in (.05, .01, .001) ])
+ptxt = r"p<0.001" if pval < .001 else fr"$p={pval:.2f}$"
+ptxt = ptxt.replace("0", "", 1)
+chi2txt = fr"$\chi^2={chi2val:.0f}$"
+stats_txt = chi2txt + "\n" + ptxt + sigchars
+ax.text(SIG_XLOC, SIG_YLOC, stats_txt, transform=ax.transAxes,
+    ha="left", va="top", linespacing=1)
 
 # Export!
 plt.savefig(export_fullpath)
