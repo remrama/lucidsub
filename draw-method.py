@@ -47,7 +47,7 @@ g.attr("edge",
 
 # Draw nodes and edges.
 for k, v in LABELS.items():
-    g.node(k, label=v, xlabel=k)
+    g.node(k, label=v)#, xlabel=k)
 g.edge("A", "B", weight="1")
 g.edge("B", "C", weight="1")
 g.edge("C", "B", weight="0", label="Repeat as needed")
