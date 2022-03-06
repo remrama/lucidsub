@@ -73,7 +73,7 @@ g.edge("L4", "L5", style="invis")
 ######################## Generate the main section of interest.
 
 # Start with first node.
-g.node("A1", label="Lucid dream\ninduction attempt")
+g.node("A1", label="Lucid dream\ninduction attempt", fillcolor="white")
 
 # Create subgraphs for the middle sections so they stack on top of each other.
 # ***THE NAME OF THE SUBGRAPHS IMPACTS FORMATTING (STAY WITH cluster_<i>)***
