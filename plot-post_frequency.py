@@ -4,7 +4,6 @@ with a monthly timecourse.
 import os
 import pandas as pd
 
-import seaborn as sea
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.patches as mpatches
@@ -44,17 +43,17 @@ with open(export_fname_txt, "wt", encoding="utf-8") as f:
 
 ############################## Plot it.
 
-FIGSIZE = (5.5, 1.5)
+FIGSIZE = (6, 1.2)
 
 # Open figure.
 fig, ax= plt.subplots(figsize=FIGSIZE, constrained_layout=True)
 
 # Pick parameters.
-YMAX = 4000
-YTICK_MINOR = 100
+YMAX = 3600
+YTICK_MINOR = 200
 YTICK_MAJOR = 1000
 GRID_COLOR = "gainsboro"
-GRID_LINEWIDTH = dict(major=1, minor=.3)
+GRID_LINEWIDTH = dict(major=1, minor=.5)
 
 # Generate monthly bins.
 XMIN = pd.to_datetime("2009-06-01")
@@ -63,18 +62,17 @@ n_years = (XMAX-XMIN).days // 365
 n_bins = n_years * 12 # to get 1 bin/tick per month
 binrange = (mdates.date2num(XMIN), mdates.date2num(XMAX))
 
+HIST_KWARGS = dict(linewidth=.5, edgecolor="black",
+    color="gainsboro", density=False, alpha=1,
+    cumulative=False, histtype="bar", zorder=9)
+
 # Draw histogram.
-sea.histplot(data=df, x="timestamp",
-    bins=n_bins, binrange=binrange,
-    stat="count", cumulative=False,
-    element="bars", fill=True,
-    color="gainsboro", alpha=1,
-    linewidth=.5, edgecolor="black",
-    ax=ax)
+values = df["timestamp"].values
+ax.hist(values, bins=n_bins, range=binrange, **HIST_KWARGS)
 
 # a e s t h e t i c s
-ax.set_xlabel("Date (year)")
-ax.set_ylabel("Post frequency (monthly)")
+ax.set_xlabel("Year", labelpad=2)
+ax.set_ylabel("Post frequency")
 ax.set_ybound(upper=YMAX)
 ax.set_xlim(XMIN, XMAX)
 ax.tick_params(which="both", axis="y", direction="in")
