@@ -28,7 +28,8 @@ Some useful details about Upload:
     Eg, uploading to code/README.md without an existing code directory is fine.
     And you can put it in / if you just want something in the home directory.
 
-I'm always using -U, bc why not?
+I'd like to use the -U flag but I get a path-related bug,
+so I'm forcing an overwrite of everything at each upload.
 """
 import os
 import glob
@@ -72,7 +73,7 @@ list_of_files = [ f.decode() for f in list_of_files ]
 
 # Upload the code files to a new directory, "code" (it doesn't have to exist yet).
 for fname in tqdm.tqdm(list_of_files, desc="Uploading code files"):
-    command = ["osf", "upload", "-U", fname, f"code/{fname}"]
+    command = ["osf", "upload", "--force", fname, f"code/{fname}"]
     if DRY_RUN:
         print(command) 
     else:
@@ -99,6 +100,8 @@ EXCLUDE_FILES = [
     "r-LucidDreaming_2019April+200.jsonl",
     "r-LucidDreaming_2019July+200.csv",
     "r-LucidDreaming_2019July+200.jsonl",
+    "doccano-disagreements_2019April.csv",
+    "doccano-disagreements_2019July.csv",
     "themes-highlights.csv",
     "themes-valence.jsonl",
 ]
@@ -111,7 +114,7 @@ filenames = [ fn for fn in filenames if os.path.basename(fn) not in EXCLUDE_FILE
 # Upload derivatives, one file at a time.
 for fname in tqdm.tqdm(filenames, desc="Uploading derivatives"):
     basename = os.path.basename(fname)
-    command = ["osf", "upload", "-U", fname, f"data/derivatives/{basename}"]
+    command = ["osf", "upload", "--force", fname, f"data/derivatives/{basename}"]
     if DRY_RUN:
         print(command)
     else:
@@ -124,7 +127,7 @@ for fname in tqdm.tqdm(filenames, desc="Uploading derivatives"):
 # All of the results directory can go up. It's only final values and figures.
 print("Uploading all of results...")
 results_directory = os.path.join(utils.Config.data_directory, "results")
-command = ["osf", "upload", "-U", "-r", results_directory, "/data"]
+command = ["osf", "upload", "--force", "-r", results_directory, "/data"]
 if DRY_RUN:
     print(command)
 else:
