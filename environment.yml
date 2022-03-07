@@ -24,8 +24,9 @@ dependencies:
   - openpyxl                  # data analysis - read excel into pandas
 
   - matplotlib                # data visualization
-  - seaborn                   # data visualization
   - conda-forge::colorcet     # data visualization - colormaps
+  - networkx                  # data visualization - network plot
+  - conda-forge::nxviz        # data visualization - network plot
   - python-graphviz           # visualization - box/arrow diagrams
   
   - pip
