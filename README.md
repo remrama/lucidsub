@@ -67,9 +67,11 @@ python plot-postXthemeXcoder.py --month july    # ==> data/results/doccano-postX
 **Manual step.** Leave code and resolve final disputes. Save as `data/source/doccano-disagreements_2019April-DONE.xlsx` and `data/source/doccano-disagreements_2019July-DONE.xlsx`.
 
 ```bash
-# Export table and visualization of final theme frequencies (across both versions/months).
+# Export table and visualizations of theme frequencies.
 python analysis-theme_frequencies.py            # ==> data/results/themes-frequencies.csv
 python plot-theme_frequencies.py                # ==> data/results/themes-frequencies.png
+python plot-theme_overlap.py                    # ==> data/results/themes-overlap.png
+python plot-post_breakdown.py                   # ==> data/results/post-breakdown.png
 
 # Compare frequencies of *only* positive and only negative posts, and visualize.
 # And generate 2 other files related to these "only" posts for later use.
