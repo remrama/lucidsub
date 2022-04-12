@@ -1,6 +1,6 @@
 # lucidsub
 
-This is code for a project exploring positive and negative experiences around lucid dreaming. It involves running a content analysis on posts scraped from the [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) subreddit. The content analysis is qualitative/manual, so code here is for other steps, like scraping/cleaning the data, aggregating the content analysis output, statistics, and visualizations. 
+This is code for a project exploring positive and negative experiences around lucid dreaming. It involves running a content analysis on posts scraped from the [r/LucidDreaming](https://www.reddit.com/r/LucidDreaming/) subreddit. The content analysis is qualitative/manual, so code here is for other steps, like scraping/cleaning the data, aggregating the content analysis output, statistics, and visualizations. Preprint posted [here](https://doi.org/10.31234/osf.io/6ub4d).
 
 
 
