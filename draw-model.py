@@ -52,22 +52,20 @@ g.attr("edge",
 
 ######################## Set up the legend.
 
-# Create 5 nodes in a row, first 3 invisible to create space
-# and use the last two in a subgraph for the legend.
-g.node("L1", style="invis")
-g.node("L2", style="invis")
-g.node("L3", style="invis")
-with g.subgraph(name="cluster_0") as s: # The subgraph is just for the frame.
-    s.attr(label="Legend", style="rounded,filled", fillcolor="white")
+# Create an invisible node sequence to create space for the legend.
+# g.node("L1", style="invis")
+g.node("L2")
+g.node("L3")
+# Draw legend as a subgraph.
+with g.subgraph(name="cluster_0") as s:
+    s.attr(label="", style="invis")
     s.attr("node", fontsize="8", height="0", width="0")
-    s.node("L4", label="Positive\nexperience", fillcolor=pos_color)
-    s.node("L5", label="Negative\nexperience", fillcolor=neg_color)
-
+    s.node("L2", label="Positive\nexperience", fillcolor=pos_color)
+    s.node("L3", label="Negative\nexperience", fillcolor=neg_color)
 # Connect them all (invisibly) so they form a straight line.
-g.edge("L1", "L2", style="invis")
-g.edge("L2", "L3", style="invis")
-g.edge("L3", "L4", style="invis")
-g.edge("L4", "L5", style="invis")
+# g.edge("L1", "L2", style="invis")
+# g.edge("L2", "L3", style="invis")
+
 
 
 ######################## Generate the main section of interest.
