@@ -57,11 +57,12 @@ python doccano2csv.py --month july              # ==> data/derivatives/doccano-p
                                                 # ==> data/derivatives/doccano-postXthemeXcoder_2019July.csv
                                                 # ==> data/derivatives/doccano-disagreements_2019July.csv
 
-# Visuale how often coders (dis)agree.
+# Visualize how often coders (dis)agree.
 python plot-postXtheme.py --month april         # ==> data/results/doccano-postXtheme_2019April.png
 python plot-postXtheme.py --month july          # ==> data/results/doccano-postXtheme_2019July.png
 python plot-postXthemeXcoder.py --month april   # ==> data/results/doccano-postXthemeXcoder_2019April.png
 python plot-postXthemeXcoder.py --month july    # ==> data/results/doccano-postXthemeXcoder_2019July.png
+python analysis-theme_agreement.py              # ==> data/results/themes-agreement.csv
 ```
 
 **Manual step.** Leave code and resolve final disputes. Save as `data/source/doccano-disagreements_2019April-DONE.xlsx` and `data/source/doccano-disagreements_2019July-DONE.xlsx`.
