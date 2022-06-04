@@ -71,7 +71,6 @@ python plot-postXthemeXcoder.py --month july    # ==> data/results/doccano-postX
 python analysis-theme_frequencies.py            # ==> data/results/themes-frequencies.csv
 python plot-theme_frequencies.py                # ==> data/results/themes-frequencies.png
 python plot-theme_overlap.py                    # ==> data/results/themes-overlap.png
-python plot-post_breakdown.py                   # ==> data/results/post-breakdown.png
 
 # Compare frequencies of *only* positive and only negative posts, and visualize.
 # And generate 2 other files related to these "only" posts for later use.
@@ -85,8 +84,17 @@ python plot-theme_valence.py                    # ==> data/results/themes-valenc
 python analysis-descriptives.py                 # ==> data/results/themes-descriptives.csv
                                                 # ==> data/results/corpus-descriptives.csv
 
-# Export a table with all highlighted/"themed" content to browse for examples.
-python generate_highlights_table.py             # ==> data/derivatives/themes-highlights.csv
+# Generate some descriptive values for each theme and the overall corpus.
+# export some descriptive values to include in Results text
+python analysis-descriptives.py                 # ==> data/results/themes-descriptives.csv
+                                                # ==> data/results/corpus-descriptives.csv
+
+# Visualize breakdown of sample size.
+python plot-post_breakdown.py                   # ==> data/results/post-breakdown.png
+
+# Compare popularity of positive and negative theme posts.
+python analysis-theme_popularity.py             # ==> data/results/themes-popularity_stats.csv
+python plot-theme_popularity.py                 # ==> data/results/themes-popularity.png
 ```
 
 **Manual step.** Code posts on [Doccano](https://doccano.herokuapp.com/). Once finished, save the main Doccano output folders in the `data/source/` directory and rename them to `data/source/doccano-control` and `data/source/doccano-lucidity`.
