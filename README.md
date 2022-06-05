@@ -46,7 +46,7 @@ python clean-reddit.py --month july             # ==> data/derivatives/r-LucidDr
                                                 # ==> data/derivatives/r-LucidDreaming_2019July+200.jsonl
 ```
 
-**Manual step.** Code posts on [Doccano](https://doccano.herokuapp.com/). Once finished, save the main Doccano output folders in the `data/source/` directory and rename them to `data/source/doccano-2019April` and `data/source/doccano-2019July`.
+**Manual step.** Code posts on [Doccano](https://doccano.herokuapp.com/). Once finished, save the main Doccano output folders (exported as jsonl) in the `data/source/` directory and rename them to `data/source/doccano-2019April` and `data/source/doccano-2019July`.
 
 ```bash
 # Convert Doccano ratings to useful csv files.
@@ -62,7 +62,9 @@ python plot-postXtheme.py --month april         # ==> data/results/doccano-postX
 python plot-postXtheme.py --month july          # ==> data/results/doccano-postXtheme_2019July.png
 python plot-postXthemeXcoder.py --month april   # ==> data/results/doccano-postXthemeXcoder_2019April.png
 python plot-postXthemeXcoder.py --month july    # ==> data/results/doccano-postXthemeXcoder_2019July.png
+# and export percentages
 python analysis-theme_agreement.py              # ==> data/results/themes-agreement.csv
+python analysis-attribute_agreement.py          # ==> data/results/attribute-agreement.csv
 ```
 
 **Manual step.** Leave code and resolve final disputes. Save as `data/source/doccano-disagreements_2019April-DONE.xlsx` and `data/source/doccano-disagreements_2019July-DONE.xlsx`.
@@ -98,7 +100,7 @@ python analysis-theme_popularity.py             # ==> data/results/themes-popula
 python plot-theme_popularity.py                 # ==> data/results/themes-popularity.png
 ```
 
-**Manual step.** Code posts on [Doccano](https://doccano.herokuapp.com/). Once finished, save the main Doccano output folders in the `data/source/` directory and rename them to `data/source/doccano-control` and `data/source/doccano-lucidity`.
+**Manual step.** Code posts on [Doccano](https://doccano.herokuapp.com/). Once finished, save the main Doccano output folders (export as csv) in the `data/source/` directory and rename them to `data/source/doccano-control` and `data/source/doccano-lucidity`.
 
 ```bash
 python analysis-valenceXattributes.py           # ==> data/results/themes-valenceXattribute_freqs.csv

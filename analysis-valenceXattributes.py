@@ -10,6 +10,8 @@ import pingouin as pg
 import utils
 
 
+CODER = "lsowin" # or rraider
+
 ############ I/O
 
 export_basename_freqs = "themes-valenceXattribute_freqs.csv"
@@ -44,7 +46,7 @@ for attr in ["control", "lucidity"]:
 
     # Load the Doccano ratings/results file.
     import_fullpath_ratings = os.path.join(utils.Config.data_directory, "source",
-        f"doccano-{attr}", "lsowin.csv")
+        f"doccano-{attr}", f"{CODER}.csv")
     ratings = pd.read_csv(import_fullpath_ratings, usecols=[0,2], index_col="id", squeeze=True)
 
     # Adjust the Doccano ratings.
