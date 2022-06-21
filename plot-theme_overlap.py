@@ -140,13 +140,13 @@ nv.plots.aspect_equal()
 
 ###### Generate and draw legends.
 
-n_posts_min = node_table["n_posts"].min()
-n_posts_max = node_table["n_posts"].max()
-n_posts_mid = round((n_posts_max-n_posts_min) / 2)
+n_posts_min = 1 #node_table["n_posts"].min()
+n_posts_max = 70 #node_table["n_posts"].max()
+n_posts_mid = 35 #round((n_posts_max-n_posts_min) / 2)
 
 NODE_LEGEND_XBASE = -8
 NODE_LEGEND_YBASE = -8
-NODE_HANDLE_LABEL_OFFSET = 1.8
+NODE_HANDLE_LABEL_OFFSET = 2
 NODE_HANDLE_SPACING = 1.5 # horizontal space between handles
 
 sizes = [n_posts_min, n_posts_mid, n_posts_max]
@@ -170,9 +170,9 @@ for patch in node_handles:
 
 
 ###### Now the edge legend.
-n_posts_min = edge_table["n_posts"][edge_table["n_posts"].ne(0)].min()
-n_posts_max = edge_table["n_posts"].max()
-n_posts_mid = round((n_posts_max-n_posts_min) / 2)
+n_posts_min = 1 #edge_table["n_posts"][edge_table["n_posts"].ne(0)].min()
+n_posts_max = 40 #edge_table["n_posts"].max()
+n_posts_mid = 20 #round((n_posts_max-n_posts_min) / 2)
 
 EDGE_LEGEND_XBASE = 3
 EDGE_LEGEND_YBASE = NODE_LEGEND_YBASE
@@ -187,8 +187,8 @@ xlocs = [ EDGE_LEGEND_XBASE + i*EDGE_HANDLE_SPACING + i*EDGE_HANDLE_LENGTH
 ylocs = [ EDGE_LEGEND_YBASE for s in sizes ]
 labels = [ f"{s}\npost" + ("s" if s>1 else "") for s in sizes ]
 
-LINE2D_KWARGS = dict(color="black", alpha=.1, markersize=0, clip_on=False)
-edge_handles = [ plt.Line2D([x, x+EDGE_HANDLE_LENGTH], [y, y],
+LINE2D_KWARGS = dict(solid_capstyle="butt", color="black", alpha=.1, markersize=0, clip_on=False)
+edge_handles = [ plt.Line2D([x, x], [y-EDGE_HANDLE_LENGTH/2, y+EDGE_HANDLE_LENGTH/2],
         linewidth=lw, label=l, **LINE2D_KWARGS)
     for x, y, lw, l in zip(xlocs, ylocs, linewidths, labels) ]
 for artist in edge_handles:
